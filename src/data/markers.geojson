@@ -1,0 +1,10 @@
+{
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-8.413273215072923, 40.208713952284626]
+    },
+    "properties": {
+        "name": "Marker 1"
+    }
+}
