@@ -341,79 +341,66 @@ async function showObject(objectId) {
 
     gallery.innerHTML = `
     <div class="object">
-
-    <div id="tool-bar">
-        <div class="align-left"><a id="back" href="javascript:history.back()">Voltar</a></div>
-        <div class="align-right">
-            <a href="#" id="delete-link" data-object-id="${objectId}">Apagar Registo</a>
-            <a href="/suggestion-form.html?objectId=${objectId}">Reportar Alterações</a>
-        </div>
-    </div>
-    <div class="object-image-container">
-        <img src="${object.media[0].url}">
-    </div>
-    <div id="slider-container"><div id="slider"></div></div>
-    <!-- /* <p>Evolução Temporal</p> -->
-    <h2>${object.title}</h2>
-    <div id="object-info">
-
-        <div class="info-section-1">
-            <div class="info">
-                <p class="info-title">CATEGORIA</p>
-                <p class="info-content">${object.category}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">TECNICA</p>
-                <p class="info-content">${object.technique}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">GEOGRAFIA</p>
-                <p class="info-content">${object.geography}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">AUTOR DO REGISTO</p>
-                <p class="info-content">${object.authorRecord}</p>
+        <div id="tool-bar">
+            <div class="align-left"><a id="back" href="javascript:history.back()">Voltar</a></div>
+            <div class="align-right">
+                <a href="#" id="delete-link" data-object-id="${objectId}">Apagar Registo</a>
+                <a href="/suggestion-form.html?objectId=${objectId}">Reportar Alterações</a>
             </div>
         </div>
-        <div class="info-section-2">
+        <div class="object-image-container">
+            <img src="${object.cover[0].url}">
+        </div>
+        <div id="slider-container"><div id="slider"></div></div>
+        <h2>${object.title}</h2>
+        <p>${object.description}</p>
+        <div class="info-section">
             <div class="info">
-                <p class="info-title">SUPORTE</p>
-                <p class="info-content">${object.support}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">ESTILO</p>
-                <p class="info-content">${object.style}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">DATA</p>
+                <p class="info-title">Date:</p>
                 <p class="info-content">${object.date}</p>
             </div>
             <div class="info">
-                <p class="info-title">DATA DO REGISTO</p>
-                <p class="info-content">${object.dateRecord}</p>
+                <p class="info-title">Fields:</p>
+                <p class="info-content">${object.fields.join(', ')}</p>
             </div>
+            <div class="info">
+                <p class="info-title">Keywords:</p>
+                <p class="info-content">${object.keywords.join(', ')}</p>
+            </div>
+            <div class="info">
+                <p class="info-title">Context:</p>
+                <p class="info-content">${object.context}</p>
+            </div>
+            <div class="info">
+                <p class="info-title">Advised with:</p>
+                <p class="info-content">${object.advised_with}</p>
+            </div>
+            <div class="info">
+                <p class="info-title">Tools:</p>
+                <p class="info-content">${object.tools.join(', ')}</p>
+            </div>
+            <div class="info">
+                <p class="info-title">Featured:</p>
+                <p class="info-content">${object.featured ? 'Yes' : 'No'}</p>
+            </div>
+            
         </div>
-        <div class="info-section-3">
-            <div class="info">
-                <p class="info-title">MATERIAL</p>
-                <p class="info-content">${object.material}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">AUTOR</p>
-                <p class="info-content">${object.author}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">ESTADO</p>
-                <p class="info-content">${object.state}</p>
-            </div>
+        <div class="media-container">
+        ${object.media.map(mediaItem => {
+            if (mediaItem.type === 'image') {
+                return `<img src="${mediaItem.url}" alt="Image">`;
+            } else if (mediaItem.type === 'video') {
+                return `<video controls><source src="${mediaItem.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
+            }
+        }).join('')}
+    </div>
+        <div id="navigation">
+            <div id="previous-container"></div>
+            <div id="next-container"></div>
         </div>
-    </div>
-    <div id="navigation">
-        <div id="previous-container"></div>
-        <div id="next-container"></div>
-    </div>
-</div>
-    `;
+    </div>`;
+
+
 
     const date = new Date(object.date);
     const formattedDate = `${date.getDate().toString().padStart(2, '0')}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getFullYear()}`;
@@ -557,5 +544,5 @@ filtersHeader.addEventListener('click', () => {
 
 window.onload = () => {
     debounceUpdateResults();
-/*     updateVisibility(); */
+    /*     updateVisibility(); */
 };

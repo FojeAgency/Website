@@ -65,12 +65,38 @@
                                 </div>
                             
                                 <div class="column-2">
-                                    <!-- Title, Subtitle, Description, Texts, Tags -->
+                                    <!-- Title, Description, Date, Fields, Keywords, Context, Advised by, With, Tools, Featured -->
                                     <input type="text" id="title" name="title" autocomplete="off" placeholder="Title" required><br><br>
-                                    <input type="text" id="subtitle" name="subtitle" autocomplete="off" placeholder="Subtitle" required><br><br>
                                     <input type="text" id="description" name="description" autocomplete="off" placeholder="Description" required><br><br>
-                                    <input type="text" id="texts" name="texts" autocomplete="off" placeholder="Texts" required><br><br>
-                                    <input type="text" id="tags" name="tags" autocomplete="off" placeholder="Tags" required><br><br>
+                                    <input type="date" id="date" name="date" required><br><br>
+                                    <select id="fields" name="fields" required multiple size="5">
+                                        <option value="" disabled selected>Choose a Field</option>
+                                        <option value="graphic design">Graphic Design</option>
+                                        <option value="webdesign">Web Design</option>
+                                        <option value="video">Video</option>
+                                        <option value="photography">Photography</option>
+                                        <option value="thumbnail design">Thumbnail Design</option>
+                                    </select><br><br>
+                                    <input type="text" id="keywords" name="keywords" autocomplete="off" placeholder="Keywords" required><br><br>
+                                    <textarea id="context" name="context" rows="4" placeholder="Context" required></textarea><br><br>
+                                    <input type="text" id="advised_with" name="advised_with" autocomplete="off" placeholder="Advised by, With" required><br><br>
+                                    <select id="tools" name="tools" required multiple size="7">
+                                        <option value="" disabled selected>Choose Tools</option>
+                                        <option value="Adobe Premiere">Adobe Premiere</option>
+                                        <option value="Adobe After Effects">Adobe After Effects</option>
+                                        <option value="Adobe Photoshop">Adobe Photoshop</option>
+                                        <option value="Adobe Illustrator">Adobe Illustrator</option>
+                                        <option value="Adobe InDesign">Adobe InDesign</option>
+                                        <option value="Figma">Figma</option>
+                                        <option value="Processing">Processing</option>
+                                        <option value="P5.js">P5.js</option>
+                                        <option value="HTML">HTML</option>
+                                        <option value="JS">JS</option>
+                                        <option value="CSS">CSS</option>
+                                        <option value="Node.js">Node.js</option>
+                                    </select><br><br>
+                                    <input type="checkbox" id="featured" name="featured">
+                                    <label for="featured">Featured</label><br><br>
                                 </div>
                             
                                 <div class="column-3">

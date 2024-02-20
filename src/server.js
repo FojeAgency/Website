@@ -134,13 +134,17 @@ const collectionName = "registo";
 
 app.post('/submit', upload.fields([{ name: 'cover', maxCount: 1 }, { name: 'media', maxCount: 10 }]), async (req, res) => {
     const postDocument = {
-        "title": req.body.title,
-        "subtitle": req.body.subtitle,
-        "description": req.body.description,
-        "texts": req.body.texts,
-        "tags": req.body.tags,
-        "media": [],
         "cover": [],
+        "title": req.body.title,
+        "description": req.body.description,
+        "date": req.body.date,
+        "fields": req.body.fields,
+        "keywords": req.body.keywords.split(",").map(keyword => keyword.trim()),
+        "context": req.body.context,
+        "advised_with": req.body.advised_with,
+        "tools": req.body.tools,
+        "featured": req.body.featured === 'on', // Convert checkbox value to boolean
+        "media": [],
     };
 
     // Add uploaded files to the postDocument
