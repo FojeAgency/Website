@@ -95,12 +95,12 @@ function createGalleryImages(results) {
         const container = document.createElement('div');
         container.classList.add('image-container');
 
-        if (!result.media || result.media.length === 0) {
+        if (!result.cover || result.cover.length === 0) {
             console.error("Media not found for result:", result);
             return; // Skip this result if media is missing
         }
 
-        result.media.forEach(mediaItem => {
+        result.cover.forEach(mediaItem => {
             if (mediaItem.type === 'image') {
                 const image = document.createElement('img');
                 image.classList.add('gallery-image');

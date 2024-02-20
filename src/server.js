@@ -132,7 +132,7 @@ const collectionName = "registo";
     }
 }); */
 
-app.post('/submit', upload.fields([{ name: 'image', maxCount: 10 }, { name: 'video', maxCount: 10 }]), async (req, res) => {
+app.post('/submit', upload.fields([{ name: 'cover', maxCount: 1 }, { name: 'media', maxCount: 10 }]), async (req, res) => {
     const postDocument = {
         "title": req.body.title,
         "subtitle": req.body.subtitle,
@@ -140,24 +140,38 @@ app.post('/submit', upload.fields([{ name: 'image', maxCount: 10 }, { name: 'vid
         "texts": req.body.texts,
         "tags": req.body.tags,
         "media": [],
+        "cover": [],
     };
 
-    // Add uploaded images to the postDocument
-    if (req.files['image'] && req.files['image'].length > 0) {
-        req.files['image'].forEach(file => {
-            postDocument.media.push({
-                url: file.location,
-                type: 'image'
-            });
+    // Add uploaded files to the postDocument
+    if (req.files['cover'] && req.files['cover'].length > 0) {
+        const coverFile = req.files['cover'][0];
+        let coverFileType = 'unknown';
+        if (coverFile.mimetype.startsWith('image')) {
+            coverFileType = 'image';
+        } else if (coverFile.mimetype.startsWith('video')) {
+            coverFileType = 'video';
+        }
+
+        postDocument.cover.push({
+            url: coverFile.location,
+            type: coverFileType
         });
     }
 
-    // Add uploaded videos to the postDocument
-    if (req.files['video'] && req.files['video'].length > 0) {
-        req.files['video'].forEach(file => {
+    if (req.files['media'] && req.files['media'].length > 0) {
+        req.files['media'].forEach(file => {
+            // Determine file type
+            let fileType = 'unknown';
+            if (file.mimetype.startsWith('image')) {
+                fileType = 'image';
+            } else if (file.mimetype.startsWith('video')) {
+                fileType = 'video';
+            }
+
             postDocument.media.push({
                 url: file.location,
-                type: 'video'
+                type: fileType
             });
         });
     }
@@ -186,6 +200,7 @@ app.post('/submit', upload.fields([{ name: 'image', maxCount: 10 }, { name: 'vid
         await client.close();
     }
 });
+
 
 app.post('/submit2', async (req, res) => {
     try {
