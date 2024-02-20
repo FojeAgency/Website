@@ -1,0 +1,653 @@
+@font-face {
+    font-family: 'sulsanstest-bold-webfont';
+    src: url('./data/fonts/SulSans-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'sulsanstest-light-webfont';
+    src: url('./data/fonts/SulSans-Light.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'sulsanstest-regular-webfont';
+    src: url('./data/fonts/SulSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'sulsanstest-medium-webfont';
+    src: url('./data/fonts/SulSans-Medium.woff2') format('woff2');
+}
+#ampliar{
+    position: absolute;
+    top:18px;
+    right: 20px;
+    cursor:pointer;
+}
+
+
+#galeria-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#logo a:hover {
+    text-decoration: underline;
+}
+
+
+
+* {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+#applied-filters {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 5px;
+}
+
+#applied-filters p {
+    font-size: 10px;
+    margin: 0;
+}
+
+#categoria-flex {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+}
+
+#categoria-flex a {
+    font-size: 12px;
+}
+
+label {
+    align-self: baseline;
+}
+
+#object-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.info-section-1,
+.info-section-2,
+.info-section-3 {
+    width: calc(100% / 3);
+    min-width: 150px;
+}
+
+
+.bold {
+    font-family: 'sulsanstest-light-webfont', sans-serif;
+}
+
+.info-title,
+.info-content {
+    margin: 0;
+}
+
+.info {
+    margin-bottom: 10px;
+}
+
+.info-title {
+    font-family: 'sulsanstest-light-webfont', sans-serif;
+    font-size: 10px;
+}
+
+.info-content {
+    font-family: 'sulsanstest-bold-webfont', sans-serif;
+    font-size: 14px;
+    margin-top: 5px
+}
+
+
+* {
+    font-family: 'sulsanstest-light-webfont', sans-serif;
+}
+
+#navigation {
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#tool-bar {
+    display: flex;
+    min-width: 100%;
+    text-align: right;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+#tool-bar a {
+    font-size: 12px;
+}
+
+.align-right a {
+    margin-left: 10px;
+}
+
+a {
+    color: black;
+
+}
+
+.hr-search {
+    margin-bottom: 20px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    margin-top: 15px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.options span {
+    cursor: pointer;
+    color: #808080;
+    font-size: 14px;
+    font-family: 'sulsanstest-light-webfont';
+}
+
+
+.selected span {
+    font-family: 'sulsanstest-medium-webfont';
+    color: black;
+    text-decoration: underline;
+}
+
+label {
+    display: inline;
+    font-family: 'sulsanstest-light-webfont', sans-serif;
+}
+
+.options {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+#search-icon{
+position:absolute;
+bottom:0;
+right:0;
+}
+
+.options label {
+    display: inline-block;
+    font-family: 'sulsanstest-light-webfont' !important;
+}
+
+hr {
+    padding: 0;
+    margin-top: 2px;
+    border: none;
+    border-top: 1px solid black;
+}
+
+.hr-applied-filters {
+    width: 100%;
+    z-index: 1000000;
+    margin-bottom: 5px;
+    margin-top: 0px !important;
+}
+
+.options label::after {
+    content: "/";
+    margin: 0 5px;
+    text-decoration: none !important;
+}
+
+.options label:last-of-type::after {
+    content: "";
+}
+
+.options label.selected::after {
+    text-decoration: none !important;
+}
+
+
+
+
+#cronologia {
+
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* GERAL */
+#logo {
+    position: absolute;
+    z-index: 4;
+    padding: 10px;
+    margin: 10px;
+}
+
+#logo p {
+    padding: 0;
+    margin: 0;
+}
+
+
+#options {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 5;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: none;
+}
+
+#container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    overflow: none;
+}
+
+#map-container {
+    width: calc(100vw/3);
+    box-shadow: -5px 0px 24px 0px rgba(0, 0, 0, 0.4);
+    z-index: 3;
+    overflow: hidden;
+}
+
+#filtros {
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#filtros::-webkit-scrollbar {
+    display: none;
+}
+
+.bold {
+    font-family: 'sulsanstest-bold-webfont', sans-serif;
+}
+
+#galeria {
+    width: calc(100vw/3);
+    position: relative;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: -5px 0px 24px 0px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    margin: 0;
+    background-color: #E5E5E5;
+    height: auto;
+    align-content: flex-start;
+    padding: 20px;
+}
+
+#results {
+    width: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    background-color: #E5E5E5;
+    height: auto;
+    align-content: flex-start;
+
+}
+
+
+
+
+
+#filtros {
+    width: calc(100%/3);
+    background-color: #D9D9D9;
+    z-index: 1;
+    padding: 20px;
+}
+
+.tab-title {
+    font-family: 'sulsanstest-bold-webfont', sans-serif;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+#filters {
+    width: 100%;
+    z-index: 1;
+}
+
+.filter-title {
+    font-family: 'sulsanstest-bold-webfont', sans-serif !important;
+    letter-spacing: 0px;
+    font-size: 14px;
+}
+
+.filter-light {
+    font-family: 'sulsanstest-light-webfont', sans-serif !important;
+    letter-spacing: 0px;
+}
+
+#results::-webkit-scrollbar {
+    display: none;
+}
+
+#galeria::-webkit-scrollbar {
+    display: none;
+}
+
+
+#menu {
+    display: block;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color: aliceblue;
+}
+
+.object {
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+/*MAPA*/
+
+
+#map-container {
+    position: relative;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mapboxgl-marker {
+    cursor: pointer;
+}
+
+.mapboxgl-ctrl-logo {
+    display: none !important;
+}
+
+#menu-layers {
+    position: absolute;
+    padding: 10px;
+    right: 0;
+    bottom: 0;
+    font-family: 'Open Sans', sans-serif;
+    z-index: 500;
+}
+
+
+/*IMAGENS*/
+
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: calc(100%/3);
+    transition: width 0.2s ease; 
+}
+.two-images-per-row {
+    width: calc(100% / 2);
+}
+
+.image-container:hover {
+    cursor: pointer;
+}
+
+
+.image-container img {
+    flex-shrink: 0;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.image-container img:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    transition: 1s;
+}
+
+.object-image-container img {
+    flex-shrink: 0;
+    max-width: 100%;
+
+}
+
+.gallery-image {
+    flex-shrink: 0;
+    max-width: 100%;
+}
+
+/*OBJECTS*/
+#previous-container,
+#next-container {
+    width: 50%;
+    cursor: pointer;
+}
+
+
+.previous-image,
+.next-image {
+    width: 100%;
+
+}
+
+.noUi-tooltip {
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: inherit;
+}
+
+.noUi-target {
+    height: 0.5px;
+    border: 0;
+    box-shadow: unset;
+    background: #000000;
+}
+
+html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    margin-top: 2px;
+    cursor: move;
+    cursor: grab;
+}
+
+.noUi-handle {
+    background-color: black;
+    border-radius: 0;
+    box-shadow: unset;
+    border: 0;
+}
+
+.noUi-handle:after,
+.noUi-handle:before {
+    content: unset;
+}
+
+#slider,
+#date-slider {
+    width: 100%;
+    justify-content: center;
+}
+
+#date-slider-container {
+    margin-top: 20px;
+}
+
+
+#slider-container {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+}
+
+.noUi-connect {
+    background: black;
+}
+.noUi-value {
+    display: none;
+}
+.noUi-pips {
+    bottom: auto;
+    top: -2px;
+    padding: 0 5px !important;
+    color: #000000;
+    opacity: 80%;
+}
+.noUi-marker {
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 0;
+}
+
+.noUi-target {
+    padding: 0 5px;
+}
+
+.noUi-connects {
+    margin: 0 -5px;
+    width: calc(100% + 10px);
+}
+
+#loader {
+    position: absolute;
+    width: 200px;
+    left: calc(50% - 100px);
+    top: calc(50% - 75px);
+    z-index: 1000;
+}
+
+/* Add transitions to the sections */
+#map-container,
+#galeria,
+#filtros {
+    transition: width 0.2s;
+}
+
+
+#map-container[style*="width: 20px"],
+#galeria[style*="width: 20px"],
+#filtros[style*="width: 20px"] {
+    /* Set the height of contracted sections */
+    height: calc(100% - 40px);
+    overflow: hidden;
+}
+
+#map-container[style*="width: 20px"] .tab-title,
+#galeria[style*="width: 20px"] .tab-title,
+#filtros[style*="width: 20px"] .tab-title {
+    /* Rotate and position the headers of contracted sections */
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    position: absolute;
+    bottom: 0;
+}
+
+.invisible {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.mapboxgl-canvas {
+
+    transition: width 0.2s !important;
+}
+
+.layer-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.layer-icon.selected {
+    display: none;
+}
+
+
+
+#menu-layers img {
+    cursor: pointer;
+}
+
+/****************** MOBILE */
+@media screen and (max-width: 480px) {
+    #container {
+        flex-direction: column;
+    }
+
+    #map-container {
+        min-width: 100%;
+    }
+
+    #map-container,
+    #galeria,
+    #filtros {
+        width: calc(100% - 40px);
+        height: calc(33.33% - 20px);
+        overflow-y: scroll;
+    }
+
+    .tab-title {
+        display: inline-block;
+        margin-right: 20px;
+    }
+}
