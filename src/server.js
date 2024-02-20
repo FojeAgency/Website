@@ -163,23 +163,29 @@ app.post('/submit', upload.fields([{ name: 'image', maxCount: 10 }, { name: 'vid
     }
 
     try {
+        // Assuming `client`, `dbName`, and `collectionName` are defined elsewhere
         await client.connect();
         const db = client.db(dbName);
         const collection = db.collection(collectionName);
-        await collection.insertOne(postDocument);
-        console.log(req.body);
-        res.send(`<script>alert('Post submitted successfully'); window.location.href='/index.html';</script>`);
+        
+        // Insert the postDocument into the collection
+        const result = await collection.insertOne(postDocument);
+
+        // Check if insertion was successful
+        if (result.insertedCount === 1) {
+            console.log(req.body);
+            res.send(`<script>alert('Post submitted successfully'); window.location.href='/index.html';</script>`);
+        } else {
+            throw new Error('Failed to insert post');
+        }
     } catch (err) {
         console.error(err);
         res.status(500).send(`<script>alert('There was an error submitting the post');</script>`);
     } finally {
+        // Close the database connection
         await client.close();
     }
 });
-
-
-
-
 
 app.post('/submit2', async (req, res) => {
     try {

@@ -101,28 +101,53 @@ function createGalleryImages(results) {
         }
 
         result.media.forEach(mediaItem => {
-            const image = document.createElement('img');
-            image.classList.add('gallery-image');
-            image.dataset.objectId = result._id;
-            image.addEventListener('click', () => {
-                showObject(image.dataset.objectId, results);
-            });
+            if (mediaItem.type === 'image') {
+                const image = document.createElement('img');
+                image.classList.add('gallery-image');
+                image.dataset.objectId = result._id;
+                image.addEventListener('click', () => {
+                    showObject(image.dataset.objectId, results);
+                });
 
-            if (mediaItem.url) {
-                image.src = mediaItem.url;
-            } else {
-                console.error("Image URL not found for result:", result);
-                return; // Skip this result if imageUrl is missing
+                if (mediaItem.url) {
+                    image.src = mediaItem.url;
+                } else {
+                    console.error("Image URL not found for result:", result);
+                    return; // Skip this result if imageUrl is missing
+                }
+
+                container.appendChild(image);
+            } else if (mediaItem.type === 'video') {
+                const video = document.createElement('video');
+                video.classList.add('gallery-video');
+                video.dataset.objectId = result._id;
+                video.autoplay = true;
+                video.loop = true;
+                video.muted = true; // Mute the video to ensure autoplay works in most browsers
+
+                const source = document.createElement('source');
+                source.src = mediaItem.url;
+                source.type = 'video/mp4';
+                video.appendChild(source);
+
+                // Set video dimensions to fit parent container
+                video.style.maxWidth = '100%';
+                video.style.height = 'auto';
+
+                video.addEventListener('click', () => {
+                    showObject(video.dataset.objectId, results);
+                });
+
+                container.appendChild(video);
             }
-
-            container.appendChild(image);
         });
 
         gallery.appendChild(container);
     });
 
-    console.log("Gallery images created successfully."); // Log success message
+    console.log("Gallery media created successfully."); // Log success message
 }
+
 
 
 
