@@ -172,68 +172,43 @@ app.post('/submit2', async (req, res) => {
         console.log("Connecting to the client...");
         await client.connect();
         console.log("Connected successfully!");
+        
         const db = client.db(dbName);
         const col = db.collection(collectionName);
-        const {searchValue, minYear, maxYear } = req.body;
+        
+        const { search, fields, tools } = req.body; // Extracting search, fields, and tools from the request body
+        
         console.log("Received request body: ", req.body);
+        
         const query = {};
-        if (req.body.tecnica && req.body.tecnica.length > 0) {
-            query.tecnica = { $in: req.body.tecnica };
+        
+        if (fields && fields.length > 0) {
+            query.fields = { $in: fields };
         }
-        if (req.body.autor && req.body.autor.length > 0) {
-            query.autor = { $in: req.body.autor };
+        if (tools && tools.length > 0) {
+            query.tools = { $in: tools };
         }
-        if (req.body.suporte && req.body.suporte.length > 0) {
-            query.suporte = { $in: req.body.suporte };
-        }
-        if (req.body.categoria && req.body.categoria.length > 0) {
-            query.categoria = { $in: req.body.categoria };
-        }
-
-        if (req.body.estilo && req.body.estilo.length > 0) {
-            query.estilo = { $in: req.body.estilo };
-        }
-        if (req.body.geografia && req.body.geografia.length > 0) {
-            query.geografia = { $in: req.body.geografia };
-        }
-        if (req.body.material && req.body.material.length > 0) {
-            query.material = { $in: req.body.material };
-        }
-
-        if (req.body.coordinates && req.body.coordinates.length > 0) {
-            query.location = {
-                $geoWithin: {
-                    $geometry: {
-                        type: 'Polygon',
-                        coordinates: [req.body.coordinates]
-                    }
-                }
-            };
-        }
-
+        
+        // Add other filters as needed
+        
         console.log("Built query: ", query);
-        if (minYear && maxYear) {
-            query.data = {
-                $gte: new Date(minYear, 0, 1),
-                $lte: new Date(maxYear + 1, 0, 1)
-            };
-        }
-
         
         const cursor = col.find(query);
-
+        
         let results = [];
         cursor.sort({ data: 1 }); 
         await cursor.forEach(doc => results.push(doc));
         console.log("Query results: ", results);
-        if (searchValue && searchValue.length > 0) {
+        
+        if (search && search.length > 0) {
+            // Apply search query if search term is provided
             const fuse = new Fuse(results, {
                 keys: ['titulo', 'categoria', 'address'], 
                 threshold: 0.3 
             });
-            results = fuse.search(searchValue).map(result => result.item);
+            results = fuse.search(search).map(result => result.item);
         }
-
+        
         res.send(results);
     } catch (err) {
         console.error(err);
@@ -244,6 +219,8 @@ app.post('/submit2', async (req, res) => {
         console.log("Client closed!");
     }
 });
+
+
 
 
 

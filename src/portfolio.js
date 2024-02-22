@@ -2,7 +2,7 @@
 
 
 const searchInput = document.querySelector('#search');
-/* searchInput.addEventListener('input', debounceUpdateResults); */
+ searchInput.addEventListener('input', debounceUpdateResults); 
 
 const form = document.getElementById('selection');
 console.log('Form element:', form);
@@ -115,6 +115,14 @@ let shouldUpdateDateSlider = true;
 let firstLoad = true;
 
 async function updateResults() {
+    const fields = Array.from(document.querySelectorAll('input[name=fields]:checked')).map(checkbox => checkbox.value);
+    const tools = Array.from(document.querySelectorAll('input[name=tools]:checked')).map(checkbox => checkbox.value);
+    const data = {
+        fields,
+        tools
+    };
+    console.log('Data being sent to server:', data);
+
     try {
         // Show the loader
         document.querySelector('#loader').style.display = 'block';
@@ -125,7 +133,7 @@ async function updateResults() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({}) // Empty body to indicate no filters
+            body: JSON.stringify(data) // Send the selected checkboxes' values as the body
         });
 
         if (!response.ok) {
@@ -136,7 +144,7 @@ async function updateResults() {
         results = await response.json();
 
         // Update the gallery with all results
-        createGalleryImages(results);
+
     } catch (error) {
         console.error('Error fetching results:', error);
         alert('An error occurred while fetching results');
@@ -144,6 +152,7 @@ async function updateResults() {
         // Hide the loader
         document.querySelector('#loader').style.display = 'none';
         document.querySelector('#loader-container').style.display = 'none';
+        createGalleryImages(results);
     }
 }
 
@@ -278,37 +287,6 @@ async function showObject(objectId) {
 }
 
 
-let hasDateSliderMoved = false;
-
-function createSlider(results) {
-    console.log('createSlider called with results:', results); // Log the results passed to the function
-    const slider = document.getElementById('slider');
-    const yearElement = document.getElementById('year');
-
-    if (!slider.noUiSlider) {
-        noUiSlider.create(slider, {
-            start: 0,
-            step: 1,
-            range: {
-                'min': 0,
-                'max': results.length - 1
-            },
-            pips: {
-                mode: 'steps',
-                density: 100
-            }
-        });
-
-        slider.noUiSlider.on('slide', (values, handle) => {
-            const index = parseInt(values[handle]);
-            const result = results[index];
-
-            showObject(result._id);
-            hasDateSliderMoved = true;
-        });
-    }
-}
-
 
 
 let debounceTimer;
@@ -338,9 +316,9 @@ function showGallery() {
 
 }
 
-/* form.querySelectorAll('input[type=checkbox]').forEach(checkbox => {
+form.querySelectorAll('input[type=checkbox]').forEach(checkbox => {
     checkbox.addEventListener('change', debounceUpdateResults);
-}); */
+}); 
 
 
 const mapSection = document.querySelector('#map-container');
