@@ -193,3 +193,24 @@ body {
     z-index:10000;
 }
 
+#filtros{
+    padding:20px;
+}
+
+/* Hide the checkboxes */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Style the labels */
+label {
+    cursor: pointer; /* Show pointer cursor on hover */
+
+    display: inline-block; /* Make labels behave as block elements */
+    text-decoration: none; /* Remove default underline */
+}
+
+/* Style the labels for checked checkboxes */
+input[type="checkbox"]:checked + label {
+    text-decoration: underline; /* Underline the label */
+}

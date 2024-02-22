@@ -26,83 +26,71 @@
     </div>
 
     <div id="filtros">
-
       <div id="filters">
-
         <!-- <label class="filter-light">PROCURAR</label><br> -->
-
-
-
         <form id="selection" action="/submit2" method="POST">
-
           <div class="options">
-              <img id="search-icon" src="./data/search-icon.png" width="20px" height="20px">
-              <input type="search" id="search" name="search" placeholder="PESQUISA  Ex: AAC" autocomplete="off"
-                  class="search-input">
+            <img id="search-icon" src="./data/search-icon.png" width="20px" height="20px">
+            <input type="search" id="search" name="search" placeholder="PESQUISA  Ex: AAC" autocomplete="off"
+              class="search-input">
           </div>
-          <hr class="hr-search">
-      
+
           <div class="filter-component">
-              <label class="filter-title">Fields</label>
-              <hr>
-              <div class="options">
-                  <input type="checkbox" id="graphic_design" name="fields" value="graphic design">
-                  <label for="graphic_design"><span>Graphic Design</span></label><br>
-                  <input type="checkbox" id="webdesign" name="fields" value="webdesign">
-                  <label for="webdesign"><span>Web Design</span></label><br>
-                  <input type="checkbox" id="video" name="fields" value="video">
-                  <label for="video"><span>Video</span></label><br>
-                  <input type="checkbox" id="photography" name="fields" value="photography">
-                  <label for="photography"><span>Photography</span></label><br>
-                  <input type="checkbox" id="thumbnail_design" name="fields" value="thumbnail design">
-                  <label for="thumbnail_design"><span>Thumbnail Design</span></label><br><br>
-              </div>
+            <label id="bold" class="filter-title">Fields</label>
+
+            <div class="options">
+              <input type="checkbox" id="graphic_design" name="fields" value="graphic design">
+              <label id="regular" for="graphic_design"><span>Graphic Design</span></label><br>
+              <input type="checkbox" id="webdesign" name="fields" value="webdesign">
+              <label id="regular" for="webdesign"><span>Web Design</span></label><br>
+              <input type="checkbox" id="video" name="fields" value="video">
+              <label id="regular" for="video"><span>Video</span></label><br>
+              <input type="checkbox" id="photography" name="fields" value="photography">
+              <label id="regular" for="photography"><span>Photography</span></label><br>
+              <input type="checkbox" id="thumbnail_design" name="fields" value="thumbnail design">
+              <label id="regular" for="thumbnail_design"><span>Thumbnail Design</span></label><br><br>
+            </div>
           </div>
-      
-      
+
           <div class="filter-component">
-              <label class="filter-title">Tools</label>
-              <hr>
-              <div class="options">
-                  <input type="checkbox" id="Adobe_Premiere" name="tools" value="Adobe Premiere">
-                  <label for="Adobe_Premiere"><span>Adobe Premiere</span></label><br>
-                  <input type="checkbox" id="Adobe_After_Effects" name="tools" value="Adobe After Effects">
-                  <label for="Adobe_After_Effects"><span>Adobe After Effects</span></label><br>
-                  <input type="checkbox" id="Adobe_Photoshop" name="tools" value="Adobe Photoshop">
-                  <label for="Adobe_Photoshop"><span>Adobe Photoshop</span></label><br>
-                  <input type="checkbox" id="Adobe_Illustrator" name="tools" value="Adobe Illustrator">
-                  <label for="Adobe_Illustrator"><span>Adobe Illustrator</span></label><br>
-                  <input type="checkbox" id="Adobe_InDesign" name="tools" value="Adobe InDesign">
-                  <label for="Adobe_InDesign"><span>Adobe InDesign</span></label><br>
-                  <input type="checkbox" id="Figma" name="tools" value="Figma">
-                  <label for="Figma"><span>Figma</span></label><br>
-                  <input type="checkbox" id="Processing" name="tools" value="Processing">
-                  <label for="Processing"><span>Processing</span></label><br>
-                  <input type="checkbox" id="P5_js" name="tools" value="P5.js">
-                  <label for="P5_js"><span>P5.js</span></label><br>
-                  <input type="checkbox" id="HTML" name="tools" value="HTML">
-                  <label for="HTML"><span>HTML</span></label><br>
-                  <input type="checkbox" id="JS" name="tools" value="JS">
-                  <label for="JS"><span>JS</span></label><br>
-                  <input type="checkbox" id="CSS" name="tools" value="CSS">
-                  <label for="CSS"><span>CSS</span></label><br>
-                  <input type="checkbox" id="Node_js" name="tools" value="Node.js">
-                  <label for="Node_js"><span>Node.js</span></label><br><br>
-              </div>
+            <label id="bold" class="filter-title">Tools</label>
+            <div class="options">
+              <input type="checkbox" id="Adobe_Premiere" name="tools" value="Adobe Premiere">
+              <label id="regular" for="Adobe_Premiere"><span>Adobe Premiere</span></label><br>
+              <input type="checkbox" id="Adobe_After_Effects" name="tools" value="Adobe After Effects">
+              <label id="regular" for="Adobe_After_Effects"><span>Adobe After Effects</span></label><br>
+              <input type="checkbox" id="Adobe_Photoshop" name="tools" value="Adobe Photoshop">
+              <label id="regular" for="Adobe_Photoshop"><span>Adobe Photoshop</span></label><br>
+              <input type="checkbox" id="Adobe_Illustrator" name="tools" value="Adobe Illustrator">
+              <label id="regular" for="Adobe_Illustrator"><span>Adobe Illustrator</span></label><br>
+              <input type="checkbox" id="Adobe_InDesign" name="tools" value="Adobe InDesign">
+              <label id="regular" for="Adobe_InDesign"><span>Adobe InDesign</span></label><br>
+              <input type="checkbox" id="Figma" name="tools" value="Figma">
+              <label id="regular" for="Figma"><span>Figma</span></label><br>
+              <input type="checkbox" id="Processing" name="tools" value="Processing">
+              <label id="regular" for="Processing"><span>Processing</span></label><br>
+              <input type="checkbox" id="P5_js" name="tools" value="P5.js">
+              <label id="regular" for="P5_js"><span>P5.js</span></label><br>
+              <input type="checkbox" id="HTML" name="tools" value="HTML">
+              <label id="regular" for="HTML"><span>HTML</span></label><br>
+              <input type="checkbox" id="JS" name="tools" value="JS">
+              <label id="regular" for="JS"><span>JS</span></label><br>
+              <input type="checkbox" id="CSS" name="tools" value="CSS">
+              <label id="regular" for="CSS"><span>CSS</span></label><br>
+              <input type="checkbox" id="Node_js" name="tools" value="Node.js">
+              <label id="regular" for="Node_js"><span>Node.js</span></label><br><br>
+            </div>
           </div>
-      
-      </form>
-      
-
-
-
-      </div>
-      <div id="nav-bar-links">
-        <a class="hover-underline-animation" id="bold" href="work.html">Work</a><br>
-        <a class="hover-underline-animation" id="regular" href="about.html">About</a><br>
-        <a class="hover-underline-animation" id="regular" href="contact.html">Contact</a>
+        </form>
       </div>
     </div>
+
+    <div id="nav-bar-links">
+      <a class="hover-underline-animation" id="bold" href="work.html">Work</a><br>
+      <a class="hover-underline-animation" id="regular" href="about.html">About</a><br>
+      <a class="hover-underline-animation" id="regular" href="contact.html">Contact</a>
+    </div>
+  </div>
   </div>
   <div id="content">
     <div id="header">

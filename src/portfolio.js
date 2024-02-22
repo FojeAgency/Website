@@ -117,9 +117,11 @@ let firstLoad = true;
 async function updateResults() {
     const fields = Array.from(document.querySelectorAll('input[name=fields]:checked')).map(checkbox => checkbox.value);
     const tools = Array.from(document.querySelectorAll('input[name=tools]:checked')).map(checkbox => checkbox.value);
+    const searchValue = searchInput.value;
     const data = {
         fields,
-        tools
+        tools,
+        searchValue,
     };
     console.log('Data being sent to server:', data);
 

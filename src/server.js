@@ -176,7 +176,7 @@ app.post('/submit2', async (req, res) => {
         const db = client.db(dbName);
         const col = db.collection(collectionName);
         
-        const { search, fields, tools } = req.body; // Extracting search, fields, and tools from the request body
+        const { searchValue, fields, tools } = req.body; // Extracting search, fields, and tools from the request body
         
         console.log("Received request body: ", req.body);
         
@@ -200,13 +200,13 @@ app.post('/submit2', async (req, res) => {
         await cursor.forEach(doc => results.push(doc));
         console.log("Query results: ", results);
         
-        if (search && search.length > 0) {
+        if (searchValue && searchValue.length > 0) {
             // Apply search query if search term is provided
             const fuse = new Fuse(results, {
-                keys: ['titulo', 'categoria', 'address'], 
+                keys: ['title', 'description', 'fields', 'keywords'], 
                 threshold: 0.3 
             });
-            results = fuse.search(search).map(result => result.item);
+            results = fuse.search(searchValue).map(result => result.item);
         }
         
         res.send(results);
