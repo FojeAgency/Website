@@ -90,7 +90,7 @@ body {
 #content{
     width:75vw;
     overflow: auto;
-    min-height: 1000vh;
+max-height: 100vh;
 }
 
 #logo {
@@ -133,4 +133,20 @@ body {
 .gallery-image {
     flex-shrink: 0;
     max-width: 100%;
+}
+
+#loader-container{
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: #F2F1ED;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    z-index:10000;
+    justify-content: center;
+    align-items: center;
+}
+#loader{
+    z-index:10000;
 }

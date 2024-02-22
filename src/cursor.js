@@ -20,4 +20,4 @@ $i.on("mouseenter",function(e){
 });
 $i.on("mouseleave",function(e){
   $c.removeClass("custom-cursor-active-img");
-});
+}); 

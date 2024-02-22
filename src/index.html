@@ -8,21 +8,26 @@
   <link rel="stylesheet" href="stylesheet-cursor.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-<!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/locomotive-scroll/4.0.6/locomotive-scroll.min.js"></script> -->
+  <!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/locomotive-scroll/4.0.6/locomotive-scroll.min.js"></script> -->
   <title>Foje. Agency</title>
 
 </head>
 
 
 <body>
+  <div id="loader-container">
+    <img width="300px" id="loader" src="./data/loading.gif" style="display: none;">
+  </div>
+
   <div id="nav-bar">
     <div id="logo">
-      <a class="hover-underline-animation" id="bold" href="#">Foje.</a>
+      <a class="hover-underline-animation" id="bold" href="index.html">Foje.</a>
     </div>
+
     <div id="nav-bar-links">
-      <a class="hover-underline-animation" id="bold" href="#">Work</a> </br>
-      <a class="hover-underline-animation" id="regular" href="#">About</a></br>
-      <a class="hover-underline-animation" id="regular" href="#">Contact</a>
+      <a class="hover-underline-animation" id="regular" href="work.html">Work</a><br>
+      <a class="hover-underline-animation" id="regular" href="about.html">About</a><br>
+      <a class="hover-underline-animation" id="regular" href="contact.html">Contact</a>
     </div>
   </div>
 
@@ -31,7 +36,7 @@
       <p id="bold">FEATURED WORK</p>
     </div>
     <div id="galeria">
-      <div id="results">
+      <div id="featuredResults">
 
       </div>
     </div>
@@ -45,7 +50,7 @@
   <script src="cursor.js"></script>
   <script src="title.js"></script>
 
-  <script src="porftolio.js"></script>
+  <script src="featured.js"></script>
 </body>
 
 </html>

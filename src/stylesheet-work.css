@@ -1,0 +1,195 @@
+@font-face {
+    font-family: 'Brockmann Bold';
+    src: url('../data/webfontkit/brockmann-bold-webfont.eot');
+    src: url('../data/webfontkit/brockmann-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../data/webfontkit/brockmann-bold-webfont.woff2') format('woff2'),
+         url('../data/webfontkit/brockmann-bold-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Brockmann Bold Serif';
+    src: url('../data/webfontkit/brockmann-bold-serif-webfont.eot');
+    src: url('../data/webfontkit/brockmann-bold-serif-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../data/webfontkit/brockmann-bold-serif-webfont.woff2') format('woff2'),
+         url('../data/webfontkit/brockmann-bold-serif-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Brockmann Medium';
+    src: url('../data/webfontkit/brockmann-medium-webfont.eot');
+    src: url('../data/webfontkit/brockmann-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../data/webfontkit/brockmann-medium-webfont.woff2') format('woff2'),
+         url('../data/webfontkit/brockmann-medium-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Brockmann Medium Serif';
+    src: url('../data/webfontkit/brockmann-medium-serif-webfont.eot');
+    src: url('../data/webfontkit/brockmann-medium-serif-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../data/webfontkit/brockmann-medium-serif-webfont.woff2') format('woff2'),
+         url('../data/webfontkit/brockmann-medium-serif-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Brockmann Regular';
+    src: url('../data/webfontkit/brockmann-regular-webfont.eot');
+    src: url('../data/webfontkit/brockmann-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../data/webfontkit/brockmann-regular-webfont.woff2') format('woff2'),
+         url('../data/webfontkit/brockmann-regular-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Brockmann Regular Serif';
+    src: url('../data/webfontkit/brockmann-regular-serif-webfont.eot');
+    src: url('../data/webfontkit/brockmann-regular-serif-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../data/webfontkit/brockmann-regular-serif-webfont.woff2') format('woff2'),
+         url('../data/webfontkit/brockmann-regular-serif-webfont.woff') format('woff');
+}
+
+
+#bold {
+    font-family: 'Brockmann Bold';
+    
+}
+
+#bold-serif {
+    font-family: 'Brockmann Bold Serif', sans-serif;
+}
+
+#medium {
+    font-family: 'Brockmann Medium', sans-serif;
+}
+
+#medium-serif {
+    font-family: 'Brockmann Medium Serif', sans-serif;
+}
+
+#regular {
+    font-family: 'Brockmann Regular', sans-serif;
+}
+
+#regular-serif {
+    font-family: 'Brockmann Regular Serif', sans-serif;
+}
+
+body {
+    background-color: #F2F1ED;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25vw;
+    height: 100vh;
+}
+
+#content{
+    max-width:70vw;
+    overflow: auto;
+    max-height: 100vh;
+}
+
+#logo {
+    margin: 20px;
+    margin-bottom: auto; 
+}
+
+#nav-bar-links {
+    display: block;
+    max-width: fit-content;
+    margin-top: auto; 
+    margin: 20px; 
+}
+
+#galeria {
+    width: 100%;
+    position: relative;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    align-content: flex-start;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    
+}
+
+#galeria::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+#results {
+    width: 100%;
+    background-color: #F2F1ED;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    align-content: flex-start;
+
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: calc(100%/3);
+    transition: width 0.2s ease; 
+}
+.two-images-per-row {
+    width: calc(100% / 2);
+}
+
+.image-container:hover {
+    cursor: pointer;
+}
+
+
+.image-container img {
+    flex-shrink: 0;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.image-container img:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    transition: 1s;
+}
+
+.object-image-container img {
+    flex-shrink: 0;
+    max-width: 100%;
+
+}
+
+.gallery-image {
+    flex-shrink: 0;
+    max-width: 100%;
+}
+
+#loader-container{
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: #F2F1ED;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    z-index:10000;
+    justify-content: center;
+    align-items: center;
+}
+#loader{
+    z-index:10000;
+}
+

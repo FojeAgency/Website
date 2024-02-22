@@ -28,7 +28,8 @@ switchButton.addEventListener('click', () => {
 }); */
 
 
-/* function createGalleryImages(results) {
+
+function createGalleryImages(results) {
     const gallery = document.querySelector('#results');
     if (!gallery) {
         console.error("Gallery container not found!");
@@ -49,33 +50,61 @@ switchButton.addEventListener('click', () => {
         const container = document.createElement('div');
         container.classList.add('image-container');
 
-        // Check if the result object has the imageUrl property
-        if (!result.imageUrl) {
-            console.error("Image URL not found for result:", result);
-            return; // Skip this result if imageUrl is missing
+        if (!result.cover || result.cover.length === 0) {
+            console.error("Media not found for result:", result);
+            return; // Skip this result if media is missing
         }
 
-        const image = document.createElement('img');
-        image.src = result.imageUrl;
-        image.classList.add('gallery-image');
+        result.cover.forEach(mediaItem => {
+            if (mediaItem.type === 'image') {
+                const image = document.createElement('img');
+                image.classList.add('gallery-image');
+                image.dataset.objectId = result._id;
+                image.addEventListener('click', () => {
+                    showObject(image.dataset.objectId, results);
+                });
 
-        image.dataset.objectId = result._id;
+                if (mediaItem.url) {
+                    image.src = mediaItem.url;
+                } else {
+                    console.error("Image URL not found for result:", result);
+                    return; // Skip this result if imageUrl is missing
+                }
 
-        image.addEventListener('click', () => {
-            showObject(image.dataset.objectId, results);
+                container.appendChild(image);
+            } else if (mediaItem.type === 'video') {
+                const video = document.createElement('video');
+                video.classList.add('gallery-video');
+                video.dataset.objectId = result._id;
+                video.autoplay = true;
+                video.loop = true;
+                video.muted = true; // Mute the video to ensure autoplay works in most browsers
+
+                const source = document.createElement('source');
+                source.src = mediaItem.url;
+                source.type = 'video/mp4';
+                video.appendChild(source);
+
+                // Set video dimensions to fit parent container
+                video.style.maxWidth = '100%';
+                video.style.height = 'auto';
+
+                video.addEventListener('click', () => {
+                    showObject(video.dataset.objectId, results);
+                });
+
+                container.appendChild(video);
+            }
         });
-
-        container.appendChild(image);
 
         gallery.appendChild(container);
     });
 
-    
+    console.log("Gallery media created successfully."); // Log success message
+}
 
-    console.log("Gallery images created successfully."); // Log success message
-} */
-function createGalleryImages(results) {
-    const gallery = document.querySelector('#results');
+function createFeaturedImages(results) {
+    const gallery = document.querySelector('#featuredResults');
     if (!gallery) {
         console.error("Gallery container not found!");
         return;
@@ -152,150 +181,15 @@ function createGalleryImages(results) {
 
 
 
-
 let results = [];
 let shouldUpdateDateSlider = true;
 
 let firstLoad = true;
-/*async function updateResults() {
-    // Show the loader
-    document.querySelector('#loader').style.display = 'block';
 
-    // Get the values of the form inputs
-    const dateSlider = document.getElementById('date-slider');
-    const tecnica = Array.from(form.querySelectorAll('input[name=tecnica]:checked')).map(checkbox => checkbox.value);
-    const autor = Array.from(form.querySelectorAll('input[name=autor]:checked')).map(checkbox => checkbox.value);
-    const suporte = Array.from(form.querySelectorAll('input[name=suporte]:checked')).map(checkbox => checkbox.value);
-    const categoria = Array.from(form.querySelectorAll('input[name=categoria]:checked')).map(checkbox => checkbox.value);
-    const geografia = Array.from(form.querySelectorAll('input[name=geografia]:checked')).map(checkbox => checkbox.value);
-    const estado = Array.from(form.querySelectorAll('input[name=estado]:checked')).map(checkbox => checkbox.value);
-    const estilo = Array.from(form.querySelectorAll('input[name=estilo]:checked')).map(checkbox => checkbox.value);
-    const material = Array.from(form.querySelectorAll('input[name=material]:checked')).map(checkbox => checkbox.value);
-    const searchValue = searchInput.value;
-    const dateValues = dateSlider.noUiSlider.get();
-    const minYear = parseInt(dateValues[0]);
-    const maxYear = parseInt(dateValues[1]);
-
-    // Create the data object to send to the server
-    const data = {
-        tecnica,
-        autor,
-        suporte,
-        categoria,
-        searchValue,
-        geografia,
-        estado,
-        material,
-        estilo,
-        minYear,
-        maxYear
-    };
-    console.log('Data being sent to server:', data);
-
-    // Disable the checkboxes
-    form.querySelectorAll('input[type=checkbox]').forEach(checkbox => checkbox.disabled = true);
-
-    try {
-        // Send the data to the server
-        const response = await fetch('/submit2', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-        if (!response.ok) {
-            throw new Error(`An error occurred: ${response.statusText}`);
-        }
-
-        // Get the results from the server
-        results = await response.json();
-    } catch (error) {
-        console.error(error);
-    } finally {
-        // Enable the checkboxes
-        form.querySelectorAll('input[type=checkbox]').forEach(checkbox => checkbox.disabled = false);
-
-        // Hide the loader
-        document.querySelector('#loader').style.display = 'none';
-
-        // Update the date slider if this is the first load
-        if (firstLoad === true) {
-            updateDateSlider(results);
-            firstLoad = false;
-        }
-        
-        // Update the display of the applied filters
-        updateAppliedFilters();
-    }
-
-    console.log('Results from server:', results);
-
-    // Update the map and gallery
-    createGalleryImages(results);
-} */
-
-/*
-async function updateResults() {
-    // Show the loader
-    //document.querySelector('#loader').style.display = 'block'; 
-
-    // Get the values of the form inputs
-
-    const title = document.getElementById('title').value;
-    const subtitle = document.getElementById('subtitle').value;
-    const description = document.getElementById('description').value;
-    const texts = document.getElementById('texts').value;
-    const tags = document.getElementById('tags').value;
-
-    // Get the files (images and videos)
-    const imageFiles = document.getElementById('image').files;
-    const videoFiles = document.getElementById('video').files;
-    
-    // Create a FormData object to send files
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('subtitle', subtitle);
-    formData.append('description', description);
-    formData.append('texts', texts);
-    formData.append('tags', tags);
-
-    // Append image files
-    for (const file of imageFiles) {
-        formData.append('image', file);
-    }
-
-    // Append video files
-    for (const file of videoFiles) {
-        formData.append('video', file);
-    }
-
-    try {
-        // Send the data to the server
-        const response = await fetch('/submit', {
-            method: 'POST',
-            body: formData
-        });
-        if (!response.ok) {
-            throw new Error(`An error occurred: ${response.statusText}`);
-        }
-
-        // Display success message
-        alert('Post submitted successfully');
-        window.location.href = '/index.html';
-    } catch (error) {
-        console.error(error);
-        alert('There was an error submitting the post');
-    } finally {
-        // Hide the loader
-        document.querySelector('#loader').style.display = 'none';
-    }
-}
-*/
 async function updateResults() {
     try {
         // Show the loader
-        //document.querySelector('#loader').style.display = 'block';
+        document.querySelector('#loader').style.display = 'block';
 
         // Send a request to the server to get all results
         const response = await fetch('/submit2', {
@@ -315,12 +209,14 @@ async function updateResults() {
 
         // Update the gallery with all results
         createGalleryImages(results);
+        createFeaturedImages(results);
     } catch (error) {
         console.error('Error fetching results:', error);
         alert('An error occurred while fetching results');
     } finally {
         // Hide the loader
         document.querySelector('#loader').style.display = 'none';
+        document.querySelector('#loader-container').style.display = 'none';
     }
 }
 
@@ -331,22 +227,19 @@ async function showObject(objectId) {
     const currentIndex = results.findIndex(result => result._id === objectId);
     const previousObject = currentIndex > 0 ? results[currentIndex - 1] : null;
     const nextObject = currentIndex < results.length - 1 ? results[currentIndex + 1] : null;
-
+    const currentPage = window.location.pathname;
+    
     const object = results.find(result => result._id === objectId);
     if (!object) {
         console.error(`Could not find object with ID ${objectId}`);
         return;
     }
-    const gallery = document.querySelector('#results');
+    const gallery = document.querySelector('#results') || document.querySelector('#featuredResults');
 
     gallery.innerHTML = `
     <div class="object">
         <div id="tool-bar">
-            <div class="align-left"><a id="back" href="javascript:history.back()">Voltar</a></div>
-            <div class="align-right">
-                <a href="#" id="delete-link" data-object-id="${objectId}">Apagar Registo</a>
-                <a href="/suggestion-form.html?objectId=${objectId}">Reportar Alterações</a>
-            </div>
+            <div class="align-left"><a id="back" href="${currentPage}">Voltar</a></div>
         </div>
         <div class="object-image-container">
             <img src="${object.cover[0].url}">
@@ -361,11 +254,11 @@ async function showObject(objectId) {
             </div>
             <div class="info">
                 <p class="info-title">Fields:</p>
-                <p class="info-content">${object.fields.join(', ')}</p>
+                <p class="info-content">${Array.isArray(object.fields) ? object.fields.join(', ') : 'N/A'}</p>
             </div>
             <div class="info">
                 <p class="info-title">Keywords:</p>
-                <p class="info-content">${object.keywords.join(', ')}</p>
+                <p class="info-content">${Array.isArray(object.keywords) ? object.keywords.join(', ') : 'N/A'}</p>
             </div>
             <div class="info">
                 <p class="info-title">Context:</p>
@@ -377,7 +270,7 @@ async function showObject(objectId) {
             </div>
             <div class="info">
                 <p class="info-title">Tools:</p>
-                <p class="info-content">${object.tools.join(', ')}</p>
+                <p class="info-content">${Array.isArray(object.tools) ? object.tools.join(', ') : 'N/A'}</p>
             </div>
             <div class="info">
                 <p class="info-title">Featured:</p>
@@ -385,20 +278,22 @@ async function showObject(objectId) {
             </div>
             
         </div>
-        <div class="media-container">
-        ${object.media.map(mediaItem => {
-            if (mediaItem.type === 'image') {
-                return `<img src="${mediaItem.url}" alt="Image">`;
-            } else if (mediaItem.type === 'video') {
-                return `<video controls><source src="${mediaItem.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
-            }
-        }).join('')}
-    </div>
+        <div class="media-container" style="max-width: 100%; overflow: hidden;">
+            ${object.media.map(mediaItem => {
+                if (mediaItem.type === 'image') {
+                    return `<img src="${mediaItem.url}" alt="Image" style="max-width: 100%; height: auto;">`;
+                } else if (mediaItem.type === 'video') {
+                    return `<video controls style="max-width: 100%; height: auto;"><source src="${mediaItem.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
+                }
+            }).join('')}
+        </div>
         <div id="navigation">
             <div id="previous-container"></div>
             <div id="next-container"></div>
         </div>
     </div>`;
+
+
 
 
 
@@ -513,6 +408,7 @@ function showGallery() {
     const gallery = document.querySelector('#results');
     gallery.innerHTML = '<h1>Galeria</h1>';
     createGalleryImages(results);
+    createFeaturedImages(results);
 }
 
 /* form.querySelectorAll('input[type=checkbox]').forEach(checkbox => {

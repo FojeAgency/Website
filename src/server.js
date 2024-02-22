@@ -93,45 +93,6 @@ var s3 = new AWS.S3({
 
 const collectionName = "registo";
 
-/* app.post('/submit', upload.single('image'), async (req, res) => {
-    const artefactDocument = {
-        "titulo": req.body.titulo,
-        "autor": req.body.autor,
-        "suporte": req.body.suporte,
-        "tecnica": req.body.tecnica,
-        "material": req.body.material,
-        "categoria": req.body.categoria,
-        "estado": req.body.estado,
-        "data": new Date(req.body.data),
-        "estilo": req.body.estilo,
-        "geografia": req.body.geografia,
-        "location": {
-            type: "Point",
-            coordinates: [parseFloat(req.body.longitude), parseFloat(req.body.latitude)]
-        },
-        "nomeAutor": req.body.nomeAutor,
-        "email": req.body.email,
-        "dataRegisto": new Date(req.body.dataRegisto)
-    }
-
-    try {
-        await client.connect();
-        const db = client.db(dbName);
-        const collection = db.collection(collectionName);
-        await collection.insertOne({
-            ...artefactDocument,
-            imageUrl: req.file.location
-        });
-        console.log(req.body);
-        res.send(`<script>alert('Artefacto Submetido com sucesso'); window.location.href='/index.html';</script>`);
-    } catch (err) {
-        console.error(err); // log the error object to the console
-        res.status(500).send(`<script>alert('Houve um erro ao subtmeter a imagem');</script>`);
-    } finally {
-        await client.close();
-    }
-}); */
-
 app.post('/submit', upload.fields([{ name: 'cover', maxCount: 1 }, { name: 'media', maxCount: 10 }]), async (req, res) => {
     const postDocument = {
         "cover": [],
