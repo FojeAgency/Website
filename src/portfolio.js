@@ -103,79 +103,7 @@ function createGalleryImages(results) {
     console.log("Gallery media created successfully."); // Log success message
 }
 
-function createFeaturedImages(results) {
-    const gallery = document.querySelector('#featuredResults');
-    if (!gallery) {
-        console.error("Gallery container not found!");
-        return;
-    }
 
-    gallery.innerHTML = ''; // Clear the gallery container
-
-    if (results.length === 0) {
-        const textDiv = document.createElement('div');
-        textDiv.innerHTML = '<p>Não foram encontrados resultados para os filtros utilizados.</p>';
-        gallery.appendChild(textDiv);
-        console.log("No results found for the filters."); // Log that no results were found
-        return;
-    }
-
-    results.forEach(result => {
-        const container = document.createElement('div');
-        container.classList.add('image-container');
-
-        if (!result.cover || result.cover.length === 0) {
-            console.error("Media not found for result:", result);
-            return; // Skip this result if media is missing
-        }
-
-        result.cover.forEach(mediaItem => {
-            if (mediaItem.type === 'image') {
-                const image = document.createElement('img');
-                image.classList.add('gallery-image');
-                image.dataset.objectId = result._id;
-                image.addEventListener('click', () => {
-                    showObject(image.dataset.objectId, results);
-                });
-
-                if (mediaItem.url) {
-                    image.src = mediaItem.url;
-                } else {
-                    console.error("Image URL not found for result:", result);
-                    return; // Skip this result if imageUrl is missing
-                }
-
-                container.appendChild(image);
-            } else if (mediaItem.type === 'video') {
-                const video = document.createElement('video');
-                video.classList.add('gallery-video');
-                video.dataset.objectId = result._id;
-                video.autoplay = true;
-                video.loop = true;
-                video.muted = true; // Mute the video to ensure autoplay works in most browsers
-
-                const source = document.createElement('source');
-                source.src = mediaItem.url;
-                source.type = 'video/mp4';
-                video.appendChild(source);
-
-                // Set video dimensions to fit parent container
-                video.style.maxWidth = '100%';
-                video.style.height = 'auto';
-
-                video.addEventListener('click', () => {
-                    showObject(video.dataset.objectId, results);
-                });
-
-                container.appendChild(video);
-            }
-        });
-
-        gallery.appendChild(container);
-    });
-
-    console.log("Gallery media created successfully."); // Log success message
-}
 
 
 
@@ -209,7 +137,6 @@ async function updateResults() {
 
         // Update the gallery with all results
         createGalleryImages(results);
-        createFeaturedImages(results);
     } catch (error) {
         console.error('Error fetching results:', error);
         alert('An error occurred while fetching results');
@@ -408,7 +335,7 @@ function showGallery() {
     const gallery = document.querySelector('#results');
     gallery.innerHTML = '<h1>Galeria</h1>';
     createGalleryImages(results);
-    createFeaturedImages(results);
+
 }
 
 /* form.querySelectorAll('input[type=checkbox]').forEach(checkbox => {
