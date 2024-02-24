@@ -2,7 +2,7 @@
 
 
 const searchInput = document.querySelector('#search');
- searchInput.addEventListener('input', debounceUpdateResults); 
+/* searchInput.addEventListener('input', debounceUpdateResults); */
 
 const form = document.getElementById('selection');
 console.log('Form element:', form);
@@ -29,8 +29,11 @@ switchButton.addEventListener('click', () => {
 
 
 
-function createGalleryImages(results) {
-    const gallery = document.querySelector('#results');
+
+
+function createFeaturedImages(results) {
+    const gallery = document.querySelector('#featuredResults');
+
     if (!gallery) {
         console.error("Gallery container not found!");
         return;
@@ -46,20 +49,34 @@ function createGalleryImages(results) {
         return;
     }
 
-    results.forEach(result => {
-        const container = document.createElement('div');
-        container.classList.add('image-container');
+    for (let i = 0; i < results.length; i++) {
+        const result = results[i];
+
+        if (!result.featured) {
+            continue;
+        }
+
+        const featuredPost = document.createElement('div');
+        featuredPost.classList.add('featuredPost');
+
+        // Image container
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-container');
 
         if (!result.cover || result.cover.length === 0) {
             console.error("Media not found for result:", result);
-            return; // Skip this result if media is missing
+            continue; // Skip this result if media is missing
         }
 
         result.cover.forEach(mediaItem => {
             if (mediaItem.type === 'image') {
-                const image = document.createElement('img');
+                const image = new Image(); // Create an image element
                 image.classList.add('gallery-image');
                 image.dataset.objectId = result._id;
+                image.onload = () => {
+                    // Set the height of the info container to match the height of the image
+                    infoDiv.style.height = image.clientHeight + 'px';
+                };
                 image.addEventListener('click', () => {
                     showObject(image.dataset.objectId, results);
                 });
@@ -71,7 +88,7 @@ function createGalleryImages(results) {
                     return; // Skip this result if imageUrl is missing
                 }
 
-                container.appendChild(image);
+                imageContainer.appendChild(image);
             } else if (mediaItem.type === 'video') {
                 const video = document.createElement('video');
                 video.classList.add('gallery-video');
@@ -93,14 +110,26 @@ function createGalleryImages(results) {
                     showObject(video.dataset.objectId, results);
                 });
 
-                container.appendChild(video);
+                imageContainer.appendChild(video);
             }
         });
 
-        gallery.appendChild(container);
-    });
+        featuredPost.appendChild(imageContainer);
 
-    console.log("Gallery media created successfully."); // Log success message
+        // Info container
+        const infoDiv = document.createElement('div');
+        infoDiv.classList.add('post-info');
+        infoDiv.innerHTML = `
+            <p id="small-regular">${result.date}</p>
+            <h3 id="small-bold">${result.title}</h3>
+            <p id="small-regular">${result.context}</p>
+        `;
+        featuredPost.appendChild(infoDiv);
+
+        gallery.appendChild(featuredPost);
+    }
+
+    console.log("Gallery media and info created successfully."); // Log success message
 }
 
 
@@ -115,16 +144,6 @@ let shouldUpdateDateSlider = true;
 let firstLoad = true;
 
 async function updateResults() {
-    const fields = Array.from(document.querySelectorAll('input[name=fields]:checked')).map(checkbox => checkbox.value);
-    const tools = Array.from(document.querySelectorAll('input[name=tools]:checked')).map(checkbox => checkbox.value);
-    const searchValue = searchInput.value;
-    const data = {
-        fields,
-        tools,
-        searchValue,
-    };
-    console.log('Data being sent to server:', data);
-
     try {
         // Show the loader
         document.querySelector('#loader').style.display = 'block';
@@ -135,7 +154,7 @@ async function updateResults() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data) // Send the selected checkboxes' values as the body
+            body: JSON.stringify({}) // Empty body to indicate no filters
         });
 
         if (!response.ok) {
@@ -146,7 +165,7 @@ async function updateResults() {
         results = await response.json();
 
         // Update the gallery with all results
-
+        createFeaturedImages(results);
     } catch (error) {
         console.error('Error fetching results:', error);
         alert('An error occurred while fetching results');
@@ -154,7 +173,6 @@ async function updateResults() {
         // Hide the loader
         document.querySelector('#loader').style.display = 'none';
         document.querySelector('#loader-container').style.display = 'none';
-        createGalleryImages(results);
     }
 }
 
@@ -289,6 +307,37 @@ async function showObject(objectId) {
 }
 
 
+let hasDateSliderMoved = false;
+
+function createSlider(results) {
+    console.log('createSlider called with results:', results); // Log the results passed to the function
+    const slider = document.getElementById('slider');
+    const yearElement = document.getElementById('year');
+
+    if (!slider.noUiSlider) {
+        noUiSlider.create(slider, {
+            start: 0,
+            step: 1,
+            range: {
+                'min': 0,
+                'max': results.length - 1
+            },
+            pips: {
+                mode: 'steps',
+                density: 100
+            }
+        });
+
+        slider.noUiSlider.on('slide', (values, handle) => {
+            const index = parseInt(values[handle]);
+            const result = results[index];
+
+            showObject(result._id);
+            hasDateSliderMoved = true;
+        });
+    }
+}
+
 
 
 let debounceTimer;
@@ -314,20 +363,17 @@ checkboxes.forEach(checkbox => {
 function showGallery() {
     const gallery = document.querySelector('#results');
     gallery.innerHTML = '<h1>Galeria</h1>';
-    createGalleryImages(results);
-
+    createFeaturedImages(featuredResults);
 }
 
-form.querySelectorAll('input[type=checkbox]').forEach(checkbox => {
+/* form.querySelectorAll('input[type=checkbox]').forEach(checkbox => {
     checkbox.addEventListener('change', debounceUpdateResults);
-}); 
+}); */
 
 
 const mapSection = document.querySelector('#map-container');
-const gallerySection = document.querySelector('#galeria');
 const filtersSection = document.querySelector('#filtros');
 /* const mapHeader = mapSection.querySelector('.tab-title'); */
-const galleryHeader = gallerySection.querySelector('.tab-title');
 /* const filtersHeader = filtersSection.querySelector('.tab-title'); */
 
 

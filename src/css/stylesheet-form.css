@@ -525,18 +525,6 @@ hr {
 }
 
 
-
-#mapa {
-    box-shadow: -5px 0px 24px 0px rgba(0, 0, 0, 0.4);
-    z-index: 6;
-}
-
-#galeria {
-    box-shadow: -5px 0px 24px 0px rgba(0, 0, 0, 0.4);
-    background-color: #E5E5E5;
-    z-index: 5;
-}
-
 #filtros {
 
     z-index: 4;

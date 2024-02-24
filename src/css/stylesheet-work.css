@@ -2,54 +2,59 @@
     font-family: 'Brockmann Bold';
     src: url('../data/webfontkit/brockmann-bold-webfont.eot');
     src: url('../data/webfontkit/brockmann-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../data/webfontkit/brockmann-bold-webfont.woff2') format('woff2'),
-         url('../data/webfontkit/brockmann-bold-webfont.woff') format('woff');
+        url('../data/webfontkit/brockmann-bold-webfont.woff2') format('woff2'),
+        url('../data/webfontkit/brockmann-bold-webfont.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Brockmann Bold Serif';
     src: url('../data/webfontkit/brockmann-bold-serif-webfont.eot');
     src: url('../data/webfontkit/brockmann-bold-serif-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../data/webfontkit/brockmann-bold-serif-webfont.woff2') format('woff2'),
-         url('../data/webfontkit/brockmann-bold-serif-webfont.woff') format('woff');
+        url('../data/webfontkit/brockmann-bold-serif-webfont.woff2') format('woff2'),
+        url('../data/webfontkit/brockmann-bold-serif-webfont.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Brockmann Medium';
     src: url('../data/webfontkit/brockmann-medium-webfont.eot');
     src: url('../data/webfontkit/brockmann-medium-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../data/webfontkit/brockmann-medium-webfont.woff2') format('woff2'),
-         url('../data/webfontkit/brockmann-medium-webfont.woff') format('woff');
+        url('../data/webfontkit/brockmann-medium-webfont.woff2') format('woff2'),
+        url('../data/webfontkit/brockmann-medium-webfont.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Brockmann Medium Serif';
     src: url('../data/webfontkit/brockmann-medium-serif-webfont.eot');
     src: url('../data/webfontkit/brockmann-medium-serif-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../data/webfontkit/brockmann-medium-serif-webfont.woff2') format('woff2'),
-         url('../data/webfontkit/brockmann-medium-serif-webfont.woff') format('woff');
+        url('../data/webfontkit/brockmann-medium-serif-webfont.woff2') format('woff2'),
+        url('../data/webfontkit/brockmann-medium-serif-webfont.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Brockmann Regular';
     src: url('../data/webfontkit/brockmann-regular-webfont.eot');
     src: url('../data/webfontkit/brockmann-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../data/webfontkit/brockmann-regular-webfont.woff2') format('woff2'),
-         url('../data/webfontkit/brockmann-regular-webfont.woff') format('woff');
+        url('../data/webfontkit/brockmann-regular-webfont.woff2') format('woff2'),
+        url('../data/webfontkit/brockmann-regular-webfont.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Brockmann Regular Serif';
     src: url('../data/webfontkit/brockmann-regular-serif-webfont.eot');
     src: url('../data/webfontkit/brockmann-regular-serif-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../data/webfontkit/brockmann-regular-serif-webfont.woff2') format('woff2'),
-         url('../data/webfontkit/brockmann-regular-serif-webfont.woff') format('woff');
+        url('../data/webfontkit/brockmann-regular-serif-webfont.woff2') format('woff2'),
+        url('../data/webfontkit/brockmann-regular-serif-webfont.woff') format('woff');
 }
 
 
 #bold {
     font-family: 'Brockmann Bold';
-    
+
+}
+
+#bold-small {
+    font-family: 'Brockmann Bold';
+    font-size: 8pt;
 }
 
 #bold-serif {
@@ -66,6 +71,11 @@
 
 #regular {
     font-family: 'Brockmann Regular', sans-serif;
+}
+
+#regular-small {
+    font-family: 'Brockmann Regular', sans-serif;
+    font-size: 8pt;
 }
 
 #regular-serif {
@@ -87,22 +97,30 @@ body {
     height: 100vh;
 }
 
-#content{
-    max-width:70vw;
+#content {
+    max-width: 70vw;
     overflow: auto;
     max-height: 100vh;
 }
 
 #logo {
     margin: 20px;
-    margin-bottom: auto; 
+    margin-bottom: auto;
 }
 
 #nav-bar-links {
     display: block;
     max-width: fit-content;
-    margin-top: auto; 
-    margin: 20px; 
+    margin: 20px;
+    margin-top: auto;
+    margin-bottom: 20px; /* Add margin to push navbar links to the bottom */
+}
+
+#nav-bar-content {
+    display: flex;
+    flex-direction: column;
+    height:75%;
+    justify-content: space-between;
 }
 
 #galeria {
@@ -116,13 +134,16 @@ body {
     padding: 0;
     height: auto;
     align-content: flex-start;
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
-    
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+
 }
 
-#galeria::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
+#galeria::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
 }
 
 #results {
@@ -143,8 +164,9 @@ body {
     align-items: center;
     overflow: hidden;
     width: calc(100%/3);
-    transition: width 0.2s ease; 
+    transition: width 0.2s ease;
 }
+
 .two-images-per-row {
     width: calc(100% / 2);
 }
@@ -177,24 +199,26 @@ body {
     max-width: 100%;
 }
 
-#loader-container{
+#loader-container {
     position: fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     background-color: #F2F1ED;
     width: 100vw;
     height: 100vh;
     display: flex;
-    z-index:10000;
+    z-index: 10000;
     justify-content: center;
     align-items: center;
 }
-#loader{
-    z-index:10000;
+
+#loader {
+    z-index: 10000;
 }
 
-#filtros{
-    padding:20px;
+#filtros {
+    padding-left: 20px;
+    
 }
 
 /* Hide the checkboxes */
@@ -204,13 +228,48 @@ input[type="checkbox"] {
 
 /* Style the labels */
 label {
-    cursor: pointer; /* Show pointer cursor on hover */
+    cursor: pointer;
+    /* Show pointer cursor on hover */
 
-    display: inline-block; /* Make labels behave as block elements */
-    text-decoration: none; /* Remove default underline */
+    display: inline-block;
+    /* Make labels behave as block elements */
+    text-decoration: none;
+    /* Remove default underline */
 }
 
 /* Style the labels for checked checkboxes */
-input[type="checkbox"]:checked + label {
-    text-decoration: underline; /* Underline the label */
+input[type="checkbox"]:checked+label {
+    text-decoration: underline;
+    /* Underline the label */
+}
+
+#search {
+    border: none;
+    /* Remove border */
+    background: none;
+    padding: 0;
+    /* Remove background */
+}
+
+#search:focus {
+    outline: none;
+    /* Remove the default blue outline */
+}
+
+#search::-webkit-search-cancel-button {
+    display: none;
+    /* Hide the cancel button */
+}
+
+#toggleFilters {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 8pt;
+    text-align: left;
+    font-family: 'Brockmann Regular', sans-serif;
+    padding: 0;
+    margin-left: 20px; /* Add margin to separate filters from logo */
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit color from parent */
 }
