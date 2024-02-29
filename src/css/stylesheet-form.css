@@ -247,15 +247,14 @@ label {
     margin-bottom: 20px;
 }
 
-.column-1,
-.column-2,
-.column-3 {
-    width: 30%;
+.column-1{
+    width: 20%;
+}
+.column-2{
+    width: 60%;
 }
 
-.column-3 {
-    text-align: right;
-}
+
 
 .column-1 {
     text-align: center;
@@ -368,10 +367,16 @@ form {
 }
 
 
-* {
-    font-family: 'Brockmann Bold', sans-serif;
+label{
+    font-family: 'Brockmann Regular', sans-serif;
+}
+p{
+    font-family: 'Brockmann Regular', sans-serif;
 }
 
+h3{
+    font-family: 'Brockmann Bold', sans-serif;
+}
 .form-section {
     width: 100%;
 }
@@ -389,7 +394,6 @@ form {
 
 .form-section label {
     position: relative;
-    top: -1em;
     left: 0;
 
 }

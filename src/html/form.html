@@ -75,40 +75,55 @@
                                         <option value="video">Video</option>
                                     </select>
                                     
-                                    <select id="fields" name="fields" required multiple size="5">
-                                        <option value="" disabled selected>Choose Field(s)</option>
-                                        <option value="graphic design">Graphic Design</option>
-                                        <option value="webdesign">Web Design</option>
-                                        <option value="video">Video</option>
-                                        <option value="photography">Photography</option>
-                                        <option value="thumbnail design">Thumbnail Design</option>
-                                    </select><br><br>
+                                    <div>
+                                        <h3>Choose Field(s)</h3>
+                                        <input type="checkbox" id="graphic_design" name="fields[]" value="graphic design">
+                                        <label for="graphic_design">Graphic Design</label><br>
+                                        <input type="checkbox" id="web_design" name="fields[]" value="webdesign">
+                                        <label for="web_design">Web Design</label><br>
+                                        <input type="checkbox" id="video_production" name="fields[]" value="video">
+                                        <label for="video_production">Video Production</label><br>
+                                        <input type="checkbox" id="photography" name="fields[]" value="photography">
+                                        <label for="photography">Photography</label><br>
+                                        <input type="checkbox" id="thumbnail_design" name="fields[]" value="thumbnail design">
+                                        <label for="thumbnail_design">Thumbnail Design</label><br>
+                                    </div><br>
                                     <input type="text" id="keywords" name="keywords" autocomplete="off" placeholder="Keywords" required><br><br>
                                     <textarea id="context" name="context" rows="4" placeholder="Context" required></textarea><br><br>
                                     <input type="text" id="advised_with" name="advised_with" autocomplete="off" placeholder="Advised by, With" required><br><br>
-                                    <select id="tools" name="tools" required multiple size="7">
-                                        <option value="" disabled selected>Choose Tool(s)</option>
-                                        <option value="Adobe Premiere">Adobe Premiere</option>
-                                        <option value="Adobe After Effects">Adobe After Effects</option>
-                                        <option value="Adobe Photoshop">Adobe Photoshop</option>
-                                        <option value="Adobe Illustrator">Adobe Illustrator</option>
-                                        <option value="Adobe InDesign">Adobe InDesign</option>
-                                        <option value="Figma">Figma</option>
-                                        <option value="Processing">Processing</option>
-                                        <option value="P5.js">P5.js</option>
-                                        <option value="HTML">HTML</option>
-                                        <option value="JS">JS</option>
-                                        <option value="CSS">CSS</option>
-                                        <option value="Node.js">Node.js</option>
-                                    </select><br><br>
+                                    <div>
+                                        <h3>Choose Tool(s)</h3>
+                                        <input type="checkbox" id="adobe_premiere" name="tools[]" value="Adobe Premiere">
+                                        <label for="adobe_premiere">Adobe Premiere</label><br>
+                                        <input type="checkbox" id="adobe_after_effects" name="tools[]" value="Adobe After Effects">
+                                        <label for="adobe_after_effects">Adobe After Effects</label><br>
+                                        <input type="checkbox" id="adobe_photoshop" name="tools[]" value="Adobe Photoshop">
+                                        <label for="adobe_photoshop">Adobe Photoshop</label><br>
+                                        <input type="checkbox" id="adobe_illustrator" name="tools[]" value="Adobe Illustrator">
+                                        <label for="adobe_illustrator">Adobe Illustrator</label><br>
+                                        <input type="checkbox" id="adobe_indesign" name="tools[]" value="Adobe InDesign">
+                                        <label for="adobe_indesign">Adobe InDesign</label><br>
+                                        <input type="checkbox" id="figma" name="tools[]" value="Figma">
+                                        <label for="figma">Figma</label><br>
+                                        <input type="checkbox" id="processing" name="tools[]" value="Processing">
+                                        <label for="processing">Processing</label><br>
+                                        <input type="checkbox" id="p5js" name="tools[]" value="P5.js">
+                                        <label for="p5js">P5.js</label><br>
+                                        <input type="checkbox" id="html" name="tools[]" value="HTML">
+                                        <label for="html">HTML</label><br>
+                                        <input type="checkbox" id="js" name="tools[]" value="JS">
+                                        <label for="js">JS</label><br>
+                                        <input type="checkbox" id="css" name="tools[]" value="CSS">
+                                        <label for="css">CSS</label><br>
+                                        <input type="checkbox" id="nodejs" name="tools[]" value="Node.js">
+                                        <label for="nodejs">Node.js</label><br>
+                                    </div><br>
                                     <input type="checkbox" id="featured" name="featured">
                                     <label for="featured">Featured</label><br><br>
-                                </div>
-                            
-                                <div class="column-3">
-
                                     <button type="submit" class="link-button">Submit</button>
                                 </div>
+                            
+
                             </form>
                     </div>
                 </div>

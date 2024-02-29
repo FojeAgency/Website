@@ -7,27 +7,6 @@ const searchInput = document.querySelector('#search');
 const form = document.getElementById('selection');
 console.log('Form element:', form);
 
-/* const ampliar = document.getElementById('ampliar');
-const ampliarImg = document.getElementById('switch-button');
-const ampliarImg2 = document.getElementById('switch-button-1');
-ampliarImg2.style.display = 'none'; 
-const switchButton = document.getElementById('ampliar');
-switchButton.addEventListener('click', () => {
-    console.log(switchButton.src)
-    const imageContainers = document.querySelectorAll('.image-container');
-    imageContainers.forEach(container => {
-        container.classList.toggle('two-images-per-row');
-    });
-    if (ampliarImg2.style.display === 'none') {
-        ampliarImg2.style.display = 'block';
-        ampliarImg.style.display = 'none';
-    } else {
-        ampliarImg2.style.display = 'none'; 
-        ampliarImg.style.display = 'block'; 
-    }
-}); */
-
-
 
 
 

@@ -97,8 +97,19 @@ body {
 
 #content{
     width:75vw;
+
+}
+
+#featuredResults{
+
+    width:75vw;
     overflow: auto;
-max-height: 100vh;
+    max-height: 100vh;
+}
+
+#header{
+    padding:15px 0;
+    width:75vw;
 }
 
 #logo {
@@ -158,10 +169,7 @@ max-height: 100vh;
 #loader{
     z-index:10000;
 }
-#featuredResults{
-    width:70%;
 
-}
 
 .featured-info-item{
     display: flex;
