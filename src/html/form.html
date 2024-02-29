@@ -69,8 +69,14 @@
                                     <input type="text" id="title" name="title" autocomplete="off" placeholder="Title" required><br><br>
                                     <input type="text" id="description" name="description" autocomplete="off" placeholder="Description" required><br><br>
                                     <input type="date" id="date" name="date" required><br><br>
+                                    <select id="domain" name="domain" required>
+                                        <option value="" disabled selected>Choose Domain</option>
+                                        <option value="design">Design</option>
+                                        <option value="video">Video</option>
+                                    </select>
+                                    
                                     <select id="fields" name="fields" required multiple size="5">
-                                        <option value="" disabled selected>Choose a Field</option>
+                                        <option value="" disabled selected>Choose Field(s)</option>
                                         <option value="graphic design">Graphic Design</option>
                                         <option value="webdesign">Web Design</option>
                                         <option value="video">Video</option>
@@ -81,7 +87,7 @@
                                     <textarea id="context" name="context" rows="4" placeholder="Context" required></textarea><br><br>
                                     <input type="text" id="advised_with" name="advised_with" autocomplete="off" placeholder="Advised by, With" required><br><br>
                                     <select id="tools" name="tools" required multiple size="7">
-                                        <option value="" disabled selected>Choose Tools</option>
+                                        <option value="" disabled selected>Choose Tool(s)</option>
                                         <option value="Adobe Premiere">Adobe Premiere</option>
                                         <option value="Adobe After Effects">Adobe After Effects</option>
                                         <option value="Adobe Photoshop">Adobe Photoshop</option>

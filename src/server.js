@@ -104,8 +104,9 @@ app.post('/submit', upload.fields([{ name: 'cover', maxCount: 1 }, { name: 'medi
         "context": req.body.context,
         "advised_with": req.body.advised_with,
         "tools": req.body.tools,
-        "featured": req.body.featured === 'on', // Convert checkbox value to boolean
+        "featured": req.body.featured === 'on', 
         "media": [],
+        "domain": req.body.domain 
     };
 
     // Add uploaded files to the postDocument
@@ -165,6 +166,7 @@ app.post('/submit', upload.fields([{ name: 'cover', maxCount: 1 }, { name: 'medi
         await client.close();
     }
 });
+
 
 
 app.post('/submit2', async (req, res) => {

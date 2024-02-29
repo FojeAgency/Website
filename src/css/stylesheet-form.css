@@ -540,7 +540,7 @@ hr {
 }
 
 
-
+/* 
 .form-input-subsection select {
     margin-left: -2px;
     border: none;
@@ -565,7 +565,7 @@ hr {
 
 .form-input-subsection option {
     background-color: transparent;
-}
+} */
 
 #upload-link {
     visibility: hidden;
