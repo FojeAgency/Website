@@ -228,8 +228,6 @@ input[type="checkbox"] {
 
 /* Style the labels */
 label {
-    cursor: pointer;
-    /* Show pointer cursor on hover */
 
     display: inline-block;
     /* Make labels behave as block elements */
@@ -264,7 +262,6 @@ input[type="checkbox"]:checked+label {
 #toggleFilters {
     border: none;
     background: none;
-    cursor: pointer;
     font-size: 8pt;
     text-align: left;
     font-family: 'Brockmann Regular', sans-serif;
