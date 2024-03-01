@@ -1,7 +1,7 @@
 {
-  "name": "arquivo-grafico",
+  "name": "foje.agency",
   "version": "0.0.1",
-  "description": "Arquivo Gráfico de Coimbra",
+  "description": "Foje Agency",
   "main": "src/server.js",
   "scripts": {
     "test": "",
