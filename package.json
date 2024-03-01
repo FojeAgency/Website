@@ -5,8 +5,8 @@
   "main": "src/server.js",
   "scripts": {
     "test": "",
-    "start": "node src/index.js",
-    "watch": "nodemon src/index.js"
+    "start": "node src/server.js",
+    "watch": "nodemon src/server.js"
   },
   "author": "Jorge Santos",
   "license": "ISC",
