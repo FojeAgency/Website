@@ -2,7 +2,7 @@
   "name": "arquivo-grafico",
   "version": "0.0.1",
   "description": "Arquivo Gráfico de Coimbra",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "",
     "start": "node src/index.js",
