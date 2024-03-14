@@ -56,6 +56,12 @@
     font-size: 12pt;
 }
 
+#small-caps {
+    text-transform: uppercase;
+    font-family: 'Brockmann Regular';
+    font-size: 8pt;
+}
+
 #bold-serif {
     font-family: 'Brockmann Bold Serif', sans-serif;
 }
@@ -66,6 +72,7 @@
 
 #medium-serif {
     font-family: 'Brockmann Medium Serif', sans-serif;
+    font-size: 8pt;
 }
 
 #regular {
@@ -108,7 +115,7 @@ body {
 }
 
 #header{
-    padding:15px 0;
+    padding:20px 0;
     width:75vw;
 }
 

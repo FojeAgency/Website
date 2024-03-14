@@ -31,6 +31,32 @@
     <div id="header">
       <p id="bold">CONTACT US</p>
     </div>
+
+    <form id="myForm" action="/sendmail" method="POST">
+      <div class="form-section">
+          <hr>
+          <div class="form-info-subsection">
+              <h2 class="section-title1">envia-nos um email</h2>
+              <div class="big-mail-input-container">
+                  <div class="mail-input-container">
+                      <input type="text" id="name" name="name" placeholder="Nome" autocomplete="off" required><br><br>
+                  </div>
+                  <div class="mail-input-container">
+                      <input type="text" id="email" name="email" placeholder="Email" autocomplete="off" required><br><br>
+                  </div>
+                  <div class="mail-input-container">
+                      <input type="text" id="subject" name="subject" autocomplete="off" placeholder="Assunto" required><br><br>
+                  </div>
+                  <div class="mensagem-input-container">
+                      <input type="text" id="message" name="message" autocomplete="off" placeholder="Mensagem" required><br><br>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </form>
+  <a id="enviar" href="#" onclick="document.getElementById('myForm').submit(); return false;">Enviar</a>
+  
+
     <div id="featuredResults">
 
     </div>
@@ -44,8 +70,8 @@
 
   <script src="../scripts/cursor.js"></script>
   <script src="../scripts/title.js"></script>
-
   <script src="../scripts/porftolio.js"></script>
+  <script src="../scripts/sendgrid.js"></script>
 </body>
 
 </html>

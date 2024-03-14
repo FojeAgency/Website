@@ -9,11 +9,13 @@ const dbName = "database";
 const Fuse = require('fuse.js');
 const express = require('express');
 const sgMail = require('@sendgrid/mail');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
 const path = require('path');
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'src/data')));
 
 const upload = require('./scripts/s3Upload');
@@ -22,19 +24,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 app.use(express.json());
 
+// Set your SendGrid API key
 const apiKey = process.env.SG_EMAIL_API_KEY;
-sgMail.setApiKey(apiKey);
 
 
-   
+sgMail.setApiKey(apiKey)
 
-app.post('/sendmail', (req, res) => {
+
+  app.post('/sendmail', (req, res) => {
+    console.log("Request Body:", req.body); // Logging the request body before sending email
+
     const msg = {
-        to: 'jgsantos@live.com.pt',
-        from: 'arquivograficodecoimbra@gmail.com', // use your own verified email address here
+        to: 'fojeagency@gmail.com',
+        from: 'jgsantos@live.com.pt', // use your own verified email address here
         replyTo: req.body.email, // set the replyTo field to the visitor's email address
-        subject: req.body.assunto,
-        text: `${req.body.autorRegisto} escreveu: ${req.body.mensagem}`
+        subject: req.body.subject,
+        text: `${req.body.name} escreveu: ${req.body.message}`
     };
 
     sgMail.send(msg).then(() => {
@@ -49,6 +54,7 @@ app.post('/sendmail', (req, res) => {
         res.send('Error sending email');
     });
 });
+
 
 
 const indexSpec = {
@@ -104,9 +110,9 @@ app.post('/submit', upload.fields([{ name: 'cover', maxCount: 1 }, { name: 'medi
         "context": req.body.context,
         "advised_with": req.body.advised_with,
         "tools": req.body.tools,
-        "featured": req.body.featured === 'on', 
+        "featured": req.body.featured === 'on',
         "media": [],
-        "domain": req.body.domain 
+        "domain": req.body.domain
     };
 
     // Add uploaded files to the postDocument
@@ -147,7 +153,7 @@ app.post('/submit', upload.fields([{ name: 'cover', maxCount: 1 }, { name: 'medi
         await client.connect();
         const db = client.db(dbName);
         const collection = db.collection(collectionName);
-        
+
         // Insert the postDocument into the collection
         const result = await collection.insertOne(postDocument);
 
@@ -174,43 +180,43 @@ app.post('/submit2', async (req, res) => {
         console.log("Connecting to the client...");
         await client.connect();
         console.log("Connected successfully!");
-        
+
         const db = client.db(dbName);
         const col = db.collection(collectionName);
-        
+
         const { searchValue, fields, tools } = req.body; // Extracting search, fields, and tools from the request body
-        
+
         console.log("Received request body: ", req.body);
-        
+
         const query = {};
-        
+
         if (fields && fields.length > 0) {
             query.fields = { $in: fields };
         }
         if (tools && tools.length > 0) {
             query.tools = { $in: tools };
         }
-        
+
         // Add other filters as needed
-        
+
         console.log("Built query: ", query);
-        
+
         const cursor = col.find(query);
-        
+
         let results = [];
-        cursor.sort({ data: 1 }); 
+        cursor.sort({ data: 1 });
         await cursor.forEach(doc => results.push(doc));
         console.log("Query results: ", results);
-        
+
         if (searchValue && searchValue.length > 0) {
             // Apply search query if search term is provided
             const fuse = new Fuse(results, {
-                keys: ['title', 'description', 'fields', 'keywords'], 
-                threshold: 0.3 
+                keys: ['title', 'description', 'fields', 'keywords'],
+                threshold: 0.3
             });
             results = fuse.search(searchValue).map(result => result.item);
         }
-        
+
         res.send(results);
     } catch (err) {
         console.error(err);

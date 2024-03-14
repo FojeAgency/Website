@@ -173,54 +173,43 @@ async function showObject(objectId) {
 
     gallery.innerHTML = `
     <div class="object">
-        <div id="tool-bar">
-            <div class="align-left"><a id="back" href="${currentPage}">Voltar</a></div>
-        </div>
         <div class="object-image-container">
-            <img src="${object.cover[0].url}">
+            ${object.cover[0].type === 'image' ?
+            `<img src="${object.cover[0].url}" alt="Cover Image" style="max-width: 100%; height: auto;">` :
+            `<video controls style="max-width: 100%; height: auto;"><source src="${object.cover[0].url}" type="video/mp4">Your browser does not support the video tag.</video>`
+        }
         </div>
         <div id="slider-container"><div id="slider"></div></div>
-        <h2>${object.title}</h2>
-        <p>${object.description}</p>
+        <h2 id="bold">${object.title}</h2>
+        <p id="regular">${object.description}</p>
         <div class="info-section">
-            <div class="info">
-                <p class="info-title">Date:</p>
-                <p class="info-content">${object.date}</p>
+            <div class="info" >
+                <p id="bold">${object.domain + ' | ' + object.date}</p>
             </div>
             <div class="info">
-                <p class="info-title">Fields:</p>
-                <p class="info-content">${Array.isArray(object.fields) ? object.fields.join(', ') : 'N/A'}</p>
+                <p id="regular">${Array.isArray(object.fields) ? object.fields.join(' | ') : 'N/A'}</p>
             </div>
             <div class="info">
-                <p class="info-title">Keywords:</p>
-                <p class="info-content">${Array.isArray(object.keywords) ? object.keywords.join(', ') : 'N/A'}</p>
+                <p id="regular">${Array.isArray(object.keywords) ? object.keywords.join(' | ') : 'N/A'}</p>
             </div>
             <div class="info">
-                <p class="info-title">Context:</p>
-                <p class="info-content">${object.context}</p>
+                <p id="small-caps">${object.context}</p>
             </div>
             <div class="info">
-                <p class="info-title">Advised with:</p>
-                <p class="info-content">${object.advised_with}</p>
+                <p id="regular">${object.advised_with}</p>
             </div>
             <div class="info">
-                <p class="info-title">Tools:</p>
-                <p class="info-content">${Array.isArray(object.tools) ? object.tools.join(', ') : 'N/A'}</p>
+                <p id="regular">${Array.isArray(object.tools) ? object.tools.join(', ') : 'N/A'}</p>
             </div>
-            <div class="info">
-                <p class="info-title">Featured:</p>
-                <p class="info-content">${object.featured ? 'Yes' : 'No'}</p>
-            </div>
-            
         </div>
         <div class="media-container" style="max-width: 100%; overflow: hidden;">
             ${object.media.map(mediaItem => {
-                if (mediaItem.type === 'image') {
-                    return `<img src="${mediaItem.url}" alt="Image" style="max-width: 100%; height: auto;">`;
-                } else if (mediaItem.type === 'video') {
-                    return `<video controls style="max-width: 100%; height: auto;"><source src="${mediaItem.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
-                }
-            }).join('')}
+            if (mediaItem.type === 'image') {
+                return `<img src="${mediaItem.url}" alt="Image" style="max-width: 100%; height: auto;">`;
+            } else if (mediaItem.type === 'video') {
+                return `<video controls style="max-width: 100%; height: auto;"><source src="${mediaItem.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
+            }
+        }).join('')}
         </div>
         <div id="navigation">
             <div id="previous-container"></div>

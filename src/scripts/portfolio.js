@@ -2,7 +2,7 @@
 
 
 const searchInput = document.querySelector('#search');
- searchInput.addEventListener('input', debounceUpdateResults); 
+searchInput.addEventListener('input', debounceUpdateResults);
 
 const form = document.getElementById('selection');
 console.log('Form element:', form);
@@ -99,7 +99,6 @@ async function updateResults() {
     if (isFetchingData) return;
 
     isFetchingData = true; // Set fetching data flag to true
-
     const fields = Array.from(document.querySelectorAll('input[name=fields]:checked')).map(checkbox => checkbox.value);
     const tools = Array.from(document.querySelectorAll('input[name=tools]:checked')).map(checkbox => checkbox.value);
     const searchValue = searchInput.value;
@@ -153,62 +152,94 @@ async function showObject(objectId) {
     const previousObject = currentIndex > 0 ? results[currentIndex - 1] : null;
     const nextObject = currentIndex < results.length - 1 ? results[currentIndex + 1] : null;
     const currentPage = window.location.pathname;
-    
+
     const object = results.find(result => result._id === objectId);
     if (!object) {
         console.error(`Could not find object with ID ${objectId}`);
         return;
     }
+    const header = document.getElementById('header');
+
+    // Check if the header element exists
+    if (header) {
+        // Update the innerHTML of the header element
+        header.innerHTML = `
+        <a id="bold"  href="${currentPage}">← OUR WORK</a>
+        <div class="info">
+        <p id="small-caps">${object.domain + ' | ' + new Date(object.date).getFullYear()}</p>
+    </div>
+    `;
+    }
     const gallery = document.querySelector('#results') || document.querySelector('#featuredResults');
 
     gallery.innerHTML = `
+
     <div class="object">
-        <div id="tool-bar">
-            <div class="align-left"><a id="back" href="${currentPage}">Voltar</a></div>
-        </div>
         <div class="object-image-container">
-            <img src="${object.cover[0].url}">
+            ${object.cover[0].type === 'image' ?
+            `<img src="${object.cover[0].url}" alt="Cover Image" style="max-width: 100%; height: auto;">` :
+            `<video controls style="max-width: 100%; height: auto;"><source src="${object.cover[0].url}" type="video/mp4">Your browser does not support the video tag.</video>`
+            }
         </div>
-        <div id="slider-container"><div id="slider"></div></div>
-        <h2>${object.title}</h2>
-        <p>${object.description}</p>
+        <div class="info">
+            <h2 id="bold">${object.title}</h2>
+            <p id="small-caps">${object.context}</p>
+        </div>
+
+
         <div class="info-section">
+        <div class="column-1">
+            <!-- Fields -->
+            ${object.fields && object.fields.length > 0 ? `
             <div class="info">
-                <p class="info-title">Date:</p>
-                <p class="info-content">${object.date}</p>
+                <p id="small-caps">Fields</p>
+                <p id="regular" class="description">${object.fields.join(' | ')}</p>
             </div>
-            <div class="info">
-                <p class="info-title">Fields:</p>
-                <p class="info-content">${Array.isArray(object.fields) ? object.fields.join(', ') : 'N/A'}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">Keywords:</p>
-                <p class="info-content">${Array.isArray(object.keywords) ? object.keywords.join(', ') : 'N/A'}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">Context:</p>
-                <p class="info-content">${object.context}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">Advised with:</p>
-                <p class="info-content">${object.advised_with}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">Tools:</p>
-                <p class="info-content">${Array.isArray(object.tools) ? object.tools.join(', ') : 'N/A'}</p>
-            </div>
-            <div class="info">
-                <p class="info-title">Featured:</p>
-                <p class="info-content">${object.featured ? 'Yes' : 'No'}</p>
-            </div>
+            ` : ''}
             
+            <!-- Keywords -->
+            ${object.keywords && object.keywords.length > 0 ? `
+            <div class="info">
+                <p id="small-caps">Keywords</p>
+                <p id="regular" class="description">${object.keywords.join(' | ')}</p>
+            </div>
+            ` : ''}
+            
+            <!-- ADVISED BY / WITH -->
+            ${object.advised_with ? `
+            <div class="info">
+                <p id="small-caps">ADVISED BY / WITH</p>
+                <p id="regular" class="description">${object.advised_with}</p>
+            </div>
+            ` : ''}
+            
+            <!-- TOOLS -->
+            ${object.tools && object.tools.length > 0 ? `
+            <div class="info">
+                <p id="small-caps">TOOLS</p>
+                <p id="regular" class="description">${object.tools.join(' | ')}</p>
+            </div>
+            ` : ''}
         </div>
-        <div class="media-container" style="max-width: 100%; overflow: hidden;">
-            ${object.media.map(mediaItem => {
+        <div class="column-2">
+        
+            <!-- DESCRIPTION -->
+            ${object.description ? `
+            <div class="info">
+                <p id="small-caps">DESCRIPTION</p>
+                <p id="regular" class="description">${object.description}</p>
+            </div>
+            ` : ''}
+        </div>
+    </div>
+    
+
+        <div class="media-container">
+                ${object.media.map(mediaItem => {
                 if (mediaItem.type === 'image') {
-                    return `<img src="${mediaItem.url}" alt="Image" style="max-width: 100%; height: auto;">`;
+                    return `<img src="${mediaItem.url}" alt="Image" style="max-width: 50%; height: auto;">`;
                 } else if (mediaItem.type === 'video') {
-                    return `<video controls style="max-width: 100%; height: auto;"><source src="${mediaItem.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
+                    return `<video controls style="max-width: 50%; height: auto;"><source src="${mediaItem.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
                 }
             }).join('')}
         </div>
@@ -217,9 +248,6 @@ async function showObject(objectId) {
             <div id="next-container"></div>
         </div>
     </div>`;
-
-
-
 
 
     const date = new Date(object.date);
@@ -275,14 +303,33 @@ async function showObject(objectId) {
     });
 }
 
-document.getElementById("toggleFilters").addEventListener("click", function() {
+document.getElementById("toggleFilters").addEventListener("click", function () {
     var filtrosDiv = document.getElementById("filtros");
-    if (filtrosDiv.style.display === "none") {
-      filtrosDiv.style.display = "block";
+
+    // Toggle the visibility of filtrosDiv
+    if (filtrosDiv.style.display === "none" || filtrosDiv.style.display === "") {
+        // Set initial opacity to 0
+        filtrosDiv.style.opacity = "0";
+        // Display the filters
+        filtrosDiv.style.display = "block";
+
+        // Trigger reflow to ensure transition is applied
+        void filtrosDiv.offsetWidth;
+
+        // Add transition effect by changing opacity to 1
+        filtrosDiv.style.opacity = "1";
     } else {
-      filtrosDiv.style.display = "none";
+        // Hide the filters with transition effect
+        filtrosDiv.style.opacity = "0";
+
+        // Set a delay before hiding the element to allow transition effect
+        setTimeout(function () {
+            filtrosDiv.style.display = "none";
+        }, 300); // Adjust timing to match transition duration
     }
-  });
+});
+
+
 
 
 let debounceTimer;
@@ -314,7 +361,7 @@ function showGallery() {
 
 form.querySelectorAll('input[type=checkbox]').forEach(checkbox => {
     checkbox.addEventListener('change', debounceUpdateResults);
-}); 
+});
 
 
 const mapSection = document.querySelector('#map-container');

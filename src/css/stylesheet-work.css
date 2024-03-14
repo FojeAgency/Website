@@ -46,10 +46,54 @@
         url('../data/webfontkit/brockmann-regular-serif-webfont.woff') format('woff');
 }
 
+h2 {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
 
+#header {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.info-section{
+    margin-top: 30px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+
+}
+.column-1{
+    width: 50%;
+}
+.column-2{
+    width: 50%;
+}
+
+.info{
+    margin-bottom: 10px;
+}
+.media-container {
+    max-width: 100%;
+    overflow: hidden;
+    display:flex;
+    flex-wrap: wrap;
+}
+.description{
+    margin:0;
+}
 #bold {
     font-family: 'Brockmann Bold';
 
+}
+
+#small-caps {
+    text-transform: uppercase;
+    font-family: 'Brockmann Regular';
+    font-size: 8pt;
+    margin: 0;
 }
 
 #bold-small {
@@ -99,7 +143,6 @@ body {
 
 #content {
     max-width: 70vw;
-    overflow: auto;
     max-height: 100vh;
 }
 
@@ -113,20 +156,22 @@ body {
     max-width: fit-content;
     margin: 20px;
     margin-top: auto;
-    margin-bottom: 20px; /* Add margin to push navbar links to the bottom */
+    margin-bottom: 20px;
+    /* Add margin to push navbar links to the bottom */
 }
 
 #nav-bar-content {
     display: flex;
     flex-direction: column;
-    height:75%;
+    height: 75%;
     justify-content: space-between;
 }
 
 #galeria {
     width: 100%;
     position: relative;
-    overflow-y: scroll;
+    overflow: auto;
+    max-height: calc(100vh - 30px);
     display: flex;
     flex-wrap: wrap;
     z-index: 2;
@@ -139,6 +184,10 @@ body {
     scrollbar-width: none;
     /* Firefox */
 
+}
+
+*{
+    scrollbar-width: none;
 }
 
 #galeria::-webkit-scrollbar {
@@ -218,7 +267,7 @@ body {
 
 #filtros {
     padding-left: 20px;
-    
+
 }
 
 /* Hide the checkboxes */
@@ -266,7 +315,19 @@ input[type="checkbox"]:checked+label {
     text-align: left;
     font-family: 'Brockmann Regular', sans-serif;
     padding: 0;
-    margin-left: 20px; /* Add margin to separate filters from logo */
-    text-decoration: none; /* Remove underline from link */
-    color: inherit; /* Inherit color from parent */
+    margin-left: 20px;
+    /* Add margin to separate filters from logo */
+    text-decoration: none;
+    /* Remove underline from link */
+    color: inherit;
+    /* Inherit color from parent */
+}
+
+
+#filtros {
+    /* Your existing CSS properties */
+    display: none;
+    /* Initially hide the filters */
+    transition: all 0.3s ease;
+    /* Add transition effect for all properties */
 }
