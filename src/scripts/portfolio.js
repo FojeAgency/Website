@@ -165,9 +165,7 @@ async function showObject(objectId) {
         // Update the innerHTML of the header element
         header.innerHTML = `
         <a id="bold"  href="${currentPage}">← OUR WORK</a>
-        <div class="info">
-        <p id="small-caps">${object.domain + ' | ' + new Date(object.date).getFullYear()}</p>
-    </div>
+
     `;
     }
     const gallery = document.querySelector('#results') || document.querySelector('#featuredResults');
@@ -179,14 +177,17 @@ async function showObject(objectId) {
             ${object.cover[0].type === 'image' ?
             `<img src="${object.cover[0].url}" alt="Cover Image" style="max-width: 100%; height: auto;">` :
             `<video controls style="max-width: 100%; height: auto;"><source src="${object.cover[0].url}" type="video/mp4">Your browser does not support the video tag.</video>`
-            }
+        }
         </div>
+        <div class="title-section">
         <div class="info">
             <h2 id="bold">${object.title}</h2>
             <p id="small-caps">${object.context}</p>
         </div>
-
-
+        <div class="info">
+        <p id="small-caps">${object.domain + ' | ' + new Date(object.date).getFullYear()}</p>
+    </div>
+    </div>
         <div class="info-section">
         <div class="column-1">
             <!-- Fields -->
@@ -236,12 +237,12 @@ async function showObject(objectId) {
 
         <div class="media-container">
                 ${object.media.map(mediaItem => {
-                if (mediaItem.type === 'image') {
-                    return `<img src="${mediaItem.url}" alt="Image" style="max-width: 50%; height: auto;">`;
-                } else if (mediaItem.type === 'video') {
-                    return `<video controls style="max-width: 50%; height: auto;"><source src="${mediaItem.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
-                }
-            }).join('')}
+            if (mediaItem.type === 'image') {
+                return `<img src="${mediaItem.url}" alt="Image" style="max-width: 50%; height: auto;">`;
+            } else if (mediaItem.type === 'video') {
+                return `<video controls style="max-width: 50%; height: auto;"><source src="${mediaItem.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
+            }
+        }).join('')}
         </div>
         <div id="navigation">
             <div id="previous-container"></div>

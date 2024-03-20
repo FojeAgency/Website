@@ -359,7 +359,13 @@ filtersHeader.addEventListener('click', () => {
 });
  */
 
+
+
+
+
 window.onload = () => {
     debounceUpdateResults();
     /*     updateVisibility(); */
 };
+
+

@@ -52,10 +52,16 @@ h2 {
 }
 
 #header {
-    margin: 15px 0;
-    display: flex;
+    margin: 20px 0;
+}
+.title-section{
+
+    display:flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 30px;
+
 }
 .info-section{
     margin-top: 30px;
@@ -86,7 +92,6 @@ h2 {
 }
 #bold {
     font-family: 'Brockmann Bold';
-
 }
 
 #small-caps {
@@ -116,6 +121,10 @@ h2 {
 #regular {
     font-family: 'Brockmann Regular', sans-serif;
 }
+#small-regular {
+    font-family: 'Brockmann Regular', sans-serif;
+    font-size: 12pt;
+}
 
 #regular-small {
     font-family: 'Brockmann Regular', sans-serif;
@@ -142,8 +151,9 @@ body {
 }
 
 #content {
-    max-width: 70vw;
+    max-width: 75vw;
     max-height: 100vh;
+    padding-right: 30px;
 }
 
 #logo {
@@ -232,6 +242,18 @@ body {
 }
 
 .image-container img:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    transition: 1s;
+}
+
+ video {
+    flex-shrink: 0;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+video:hover {
     -webkit-filter: grayscale(0%);
     filter: grayscale(0%);
     transition: 1s;
