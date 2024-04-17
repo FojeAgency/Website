@@ -1,14 +1,11 @@
 // HERE
-
+document.addEventListener("DOMContentLoaded", function() {
 
 const searchInput = document.querySelector('#search');
 /* searchInput.addEventListener('input', debounceUpdateResults); */
 
 const form = document.getElementById('selection');
 console.log('Form element:', form);
-
-
-
 
 function createFeaturedImages(results) {
     const gallery = document.querySelector('#featuredResults');
@@ -50,7 +47,7 @@ function createFeaturedImages(results) {
         result.cover.forEach(mediaItem => {
             if (mediaItem.type === 'image') {
                 const image = new Image(); // Create an image element
-                image.classList.add('gallery-image');
+                image.classList.add('imagem');
                 image.dataset.objectId = result._id;
                 image.onload = () => {
                     // Set the height of the info container to match the height of the image
@@ -111,12 +108,6 @@ function createFeaturedImages(results) {
     console.log("Gallery media and info created successfully."); // Log success message
 }
 
-
-
-
-
-
-
 let results = [];
 let shouldUpdateDateSlider = true;
 
@@ -154,9 +145,6 @@ async function updateResults() {
         document.querySelector('#loader-container').style.display = 'none';
     }
 }
-
-
-
 
 async function showObject(objectId) {
     const currentIndex = results.findIndex(result => result._id === objectId);
@@ -216,10 +204,6 @@ async function showObject(objectId) {
             <div id="next-container"></div>
         </div>
     </div>`;
-
-
-
-
 
     const date = new Date(object.date);
     const formattedDate = `${date.getDate().toString().padStart(2, '0')}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getFullYear()}`;
@@ -306,15 +290,11 @@ function createSlider(results) {
     }
 }
 
-
-
 let debounceTimer;
 function debounceUpdateResults() {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(updateResults, 300);
 }
-
-
 
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 checkboxes.forEach(checkbox => {
@@ -338,14 +318,10 @@ function showGallery() {
     checkbox.addEventListener('change', debounceUpdateResults);
 }); */
 
-
 const mapSection = document.querySelector('#map-container');
 const filtersSection = document.querySelector('#filtros');
 /* const mapHeader = mapSection.querySelector('.tab-title'); */
 /* const filtersHeader = filtersSection.querySelector('.tab-title'); */
-
-
-
 
 /* galleryHeader.addEventListener('click', () => {
     galleryOpen = !galleryOpen;
@@ -359,13 +335,9 @@ filtersHeader.addEventListener('click', () => {
 });
  */
 
-
-
-
-
 window.onload = () => {
     debounceUpdateResults();
     /*     updateVisibility(); */
 };
 
-
+});

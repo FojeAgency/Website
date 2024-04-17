@@ -2,7 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const pageContainer = document.querySelector(".container");
 
-
+/* SMOOTH SCROLL */
 const scroller = new LocomotiveScroll({
   el: pageContainer,
   smooth: true
@@ -27,18 +27,19 @@ ScrollTrigger.scrollerProxy(pageContainer, {
   pinType: pageContainer.style.transform ? "transform" : "fixed"
 });
 
-
+////////////////////////////////////
+////////////////////////////////////
 window.addEventListener("load", function () {
   let pinBoxes = document.querySelectorAll(".pin-wrap > *");
   let pinWrap = document.querySelector(".pin-wrap");
   let pinWrapWidth = pinWrap.offsetWidth;
   let horizontalScrollLength = pinWrapWidth - window.innerWidth;
 
-
+  // Pinning and horizontal scrolling
 
   gsap.to(".pin-wrap", {
     scrollTrigger: {
-      scroller: pageContainer, 
+      scroller: pageContainer, //locomotive-scroll
       scrub: true,
       trigger: "#sectionPin",
       pin: true,
@@ -53,6 +54,4 @@ window.addEventListener("load", function () {
   ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
 
   ScrollTrigger.refresh();
-}); 
-
-
+});
