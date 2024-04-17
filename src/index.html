@@ -8,9 +8,8 @@
   <link rel="stylesheet" href="./css/stylesheet-about.css">
   <link rel="stylesheet" href="./css/stylesheet-cursor.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-  <!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/locomotive-scroll/4.0.6/locomotive-scroll.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.0/dist/locomotive-scroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/locomotive-scroll/4.0.6/locomotive-scroll.min.js"></script>
   <title>Foje. Agency</title>
 
 </head>
@@ -37,34 +36,26 @@
     <div id="header">
       <p id="bold">FEATURED WORK</p>
     </div>
+
     <div id="scroll-content">
-      <div class="about">
-        <div class="text" id="text1">
-          <p id="trigger">A TUA MÃE</p>
-        </div>
-        <div class="text" id="text2">
-          <p id="trigger">SIM, A TUA MÃE, FRANCISCO SURRADOR</p>
-        </div>
-        <div class="text" id="text3">
-          <p id="trigger">SIM, EXATAMENTE, A MARIA JOÃO</p>
-        </div>
-        <div class="text" id="text4">
-          <p id="trigger">É UMA GRANDE PORCA</p>
-        </div>
-        <div class="text" id="text5">
-          <p id="trigger">E FAZ MAMADAS A 20 ESCUDOS</p>
-        </div>
-        <div class="text" id="text6">
-          <p id="trigger">POR ISSO É QUE EU GOSTO TANTO DELA</p>
-        </div>
-        <div class="text" id="text7">
-          <p id="trigger">ERA SÓ</p>
-        </div>
-        <div class="text" id="text8">
-          <p id="trigger">MUITO OBRIGADO</p>
-        </div>
+
+      <div data-scroll-container>
+        <section data-scroll-section="">
+          <span class="lerp-wrap" data-scroll="">
+            <span data-scroll="" data-scroll-delay="0.8" data-scroll-speed="6" id="regular">We </span>
+            <span data-scroll="" data-scroll-delay="0.8" data-scroll-speed="6" id="regular">are </span>
+            <span data-scroll="" data-scroll-delay="0" data-scroll-speed="6" id="bold">Foje.</span>
+          </span>
+        </section>
+        <section data-scroll-section="">
+          
+        </section>
+        <div id="featuredResults"></div>
       </div>
-      <div id="featuredResults"></div>
+
+
+
+
     </div>
   </div>
 

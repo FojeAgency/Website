@@ -1,23 +1,59 @@
-.about {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    width: 75vw;
-}
-
-
 .text {
-    height: 50vh;
+    height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
-    align-content: center;
+    align-items: center;
     font-size: 48px;
     font-weight: bold;
-
-    opacity: 0; /* Set initial opacity to 0 */
-    transition: opacity 0.5s ease;
 }
 
-.visible {
-    opacity: 1; /* When ScrollTrigger activates, make the text visible */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+section p {
+    position: absolute;
+    top: 20px;
+
+    left: 20px;
+    color: #222;
+    font-weight: 700;
+    border: 1px solid #222;
+    padding: 10px;
+}
+
+section {
+    position: relative;
+    height: calc(100vh - 60px);
+    color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+}
+
+section:nth-child(2) {
+    background: #feffbf;
+}
+
+section:nth-child(3) {
+    background: #b0efef;
+}
+
+section:nth-child(4) {
+    background: #ffcbcb;
+}
+
+.lerp-wrap {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.1;
+}
+
+.lerp-wrap span {
+    position: relative;
+    display: inline-flex;
+    font-size: clamp(32px, 6vw, 16vw);
 }
