@@ -1,12 +1,12 @@
 {
-  "name": "arquivo-grafico",
+  "name": "foje.agency",
   "version": "0.0.1",
-  "description": "Arquivo Gráfico de Coimbra",
-  "main": "src/index.js",
+  "description": "Foje Agency",
+  "main": "src/server.js",
   "scripts": {
     "test": "",
-    "start": "node src/index.js",
-    "watch": "nodemon src/index.js"
+    "start": "node src/server.js",
+    "watch": "nodemon src/server.js"
   },
   "author": "Jorge Santos",
   "license": "ISC",
