@@ -11,7 +11,26 @@ const express = require('express');
 const sgMail = require('@sendgrid/mail');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+//const port = 3000;
+
+//////////////////////////////
+const http = require('http');
+const port = process.env.PORT || 3000; // Use the port provided by Heroku or default to 3000
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, world!');
+});
+
+server.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+//////////////////////////////
+
+
+
 
 const path = require('path');
 app.use(bodyParser.urlencoded({ extended: true }));
