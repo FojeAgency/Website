@@ -21,7 +21,8 @@
     "locomotive-scroll": "^5.0.0-beta.11",
     "mapbox-gl-style-switcher": "^1.0.11",
     "mongodb": "5.6",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "multer-s3": "^3.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
