@@ -2,68 +2,59 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const searchInput = document.querySelector('#search');
-    /* searchInput.addEventListener('input', debounceUpdateResults); */
-
-    const form = document.getElementById('selection');
-    console.log('Form element:', form);
 
     function createFeaturedImages(results) {
         const gallery = document.querySelector('#featuredResults');
-
         if (!gallery) {
             console.error("Gallery container not found!");
             return;
         }
-
-        gallery.innerHTML = ''; // Clear the gallery container
-
+        gallery.innerHTML = ''; 
+        let totalWidth = 0; 
+        let minWidth = Infinity; 
         if (results.length === 0) {
             const textDiv = document.createElement('div');
             textDiv.innerHTML = '<p>Não foram encontrados resultados para os filtros utilizados.</p>';
             gallery.appendChild(textDiv);
-            console.log("No results found for the filters."); // Log that no results were found
+            console.log("No results found for the filters."); 
             return;
         }
-
         for (let i = 0; i < results.length; i++) {
             const result = results[i];
-
             if (!result.featured) {
                 continue;
             }
-
             const featuredPost = document.createElement('div');
             featuredPost.classList.add('featuredPost');
-
-            // Image container
             const imageContainer = document.createElement('div');
             imageContainer.classList.add('image-container');
 
             if (!result.cover || result.cover.length === 0) {
                 console.error("Media not found for result:", result);
-                continue; // Skip this result if media is missing
+                continue; 
             }
 
             result.cover.forEach(mediaItem => {
                 if (mediaItem.type === 'image') {
-                    const image = new Image(); // Create an image element
+                    const image = new Image(); 
                     image.classList.add('imagem');
                     image.dataset.objectId = result._id;
                     image.onload = () => {
-                        // Set the height of the info container to match the height of the image
-                        infoDiv.style.height = image.clientHeight + 'px';
+                        const imageWidth = image.clientWidth + getImageMargin(image);
+                        totalWidth += imageWidth; 
+                        console.log("Image loaded. Total width:", totalWidth);
+                        gallery.style.width = totalWidth + 'px';
+                        console.log("Gallery media and info created successfully. Min width:", totalWidth); 
                     };
                     image.addEventListener('click', () => {
                         showObject(image.dataset.objectId, results);
                     });
-
                     if (mediaItem.url) {
                         image.src = mediaItem.url;
                     } else {
                         console.error("Image URL not found for result:", result);
-                        return; // Skip this result if imageUrl is missing
+                        return; 
                     }
-
                     imageContainer.appendChild(image);
                 } else if (mediaItem.type === 'video') {
                     const video = document.createElement('video');
@@ -71,17 +62,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     video.dataset.objectId = result._id;
                     video.autoplay = true;
                     video.loop = true;
-                    video.muted = true; // Mute the video to ensure autoplay works in most browsers
-
+                    video.muted = true; 
                     const source = document.createElement('source');
                     source.src = mediaItem.url;
                     source.type = 'video/mp4';
                     video.appendChild(source);
-
-                    // Set video dimensions to fit parent container
-                    video.style.maxWidth = '100%';
-                    video.style.height = 'auto';
-
                     video.addEventListener('click', () => {
                         showObject(video.dataset.objectId, results);
                     });
@@ -89,10 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     imageContainer.appendChild(video);
                 }
             });
-
             featuredPost.appendChild(imageContainer);
-
-            // Info container
             const infoDiv = document.createElement('div');
             infoDiv.classList.add('post-info');
             infoDiv.innerHTML = `
@@ -101,12 +83,28 @@ document.addEventListener("DOMContentLoaded", function () {
             <p id="small-regular">${result.context}</p>
         `;
             featuredPost.appendChild(infoDiv);
-
             gallery.appendChild(featuredPost);
         }
-
-        console.log("Gallery media and info created successfully."); // Log success message
     }
+
+
+
+
+
+
+
+    // Function to get the horizontal margin of an image element
+    function getImageMargin(image) {
+        const style = window.getComputedStyle(image);
+        return parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+    }
+
+    // Function to get the horizontal margin of an info container
+    function getInfoMargin(infoDiv) {
+        const style = window.getComputedStyle(infoDiv);
+        return parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+    }
+
 
     let results = [];
     let shouldUpdateDateSlider = true;
@@ -314,45 +312,10 @@ document.addEventListener("DOMContentLoaded", function () {
         createFeaturedImages(featuredResults);
     }
 
-    /* form.querySelectorAll('input[type=checkbox]').forEach(checkbox => {
-        checkbox.addEventListener('change', debounceUpdateResults);
-    }); */
-
-    const mapSection = document.querySelector('#map-container');
-    const filtersSection = document.querySelector('#filtros');
-    /* const mapHeader = mapSection.querySelector('.tab-title'); */
-    /* const filtersHeader = filtersSection.querySelector('.tab-title'); */
-
-    /* galleryHeader.addEventListener('click', () => {
-        galleryOpen = !galleryOpen;
-        updateVisibility();
-    });
-    
-    filtersHeader.addEventListener('click', () => {
-    
-        filtersOpen = !filtersOpen;
-        updateVisibility();
-    });
-     */
-
     window.onload = () => {
         debounceUpdateResults();
         /*     updateVisibility(); */
     };
-    // JavaScript
-    // JavaScript
-    document.querySelector('.container').addEventListener('scroll', function () {
-        // Calculate how far the user has scrolled within the container
-        const scrollPosition = this.scrollTop;
-
-        // Calculate the opacity based on scroll position
-        // Adjust the opacity range (0 to 1) as needed
-        const opacity = 1 - (scrollPosition / this.scrollHeight);
-
-        // Set the opacity of the background image
-        document.getElementById('background-image').style.opacity = opacity.toString();
-    });
-
 
 });
 
