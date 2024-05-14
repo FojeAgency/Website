@@ -32,6 +32,15 @@ app.use(express.json());
 const apiKey = process.env.SG_EMAIL_API_KEY;
 
 
+// Redirect HTTP to HTTPS
+app.use((req, res, next) => {
+    if (req.headers['x-forwarded-proto'] !== 'https' && process.env.NODE_ENV === 'production') {
+        res.redirect(301, `https://${req.hostname}${req.originalUrl}`);
+    } else {
+        next();
+    }
+});
+
 sgMail.setApiKey(apiKey)
 
 
