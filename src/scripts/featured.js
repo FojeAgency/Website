@@ -78,9 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const infoDiv = document.createElement('div');
             infoDiv.classList.add('post-info');
             infoDiv.innerHTML = `
-            <p id="small-regular">${result.date}</p>
+            
             <h3 id="small-bold">${result.title}</h3>
-            <p id="small-regular">${result.context}</p>
+            <p id="small-regular">${result.context} | ${result.date}</p>
+            <p id="small-regular"></p>
         `;
             featuredPost.appendChild(infoDiv);
             gallery.appendChild(featuredPost);

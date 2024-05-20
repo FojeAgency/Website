@@ -5,30 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel='stylesheet' href='https://use.typekit.net/skn8ash.css'>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css'>
-
 
   <link rel="stylesheet" href="./css/stylesheet-about.css">
   <link rel="stylesheet" href="./css/stylesheet-cursor.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
   <title>Foje. Agency</title>
-
 </head>
 
 <body>
 
-
   <div id="loader-container">
     <img width="200px" id="loader" src="./data/loading.gif" style="display: none;">
   </div>
-  <!-- HTML -->
-  <div id="background-image"></div>
-
+  <div id="background-video-container">
+    <video id="background-video" autoplay loop muted>
+      <source src="https://fojeportfolio.s3.eu-north-1.amazonaws.com/Banner+Foje.MP4" type="video/mp4">
+    </video>
+  </div>
+  <div id=""></div>
+  
   <div id="nav-bar">
     <div id="logo">
       <a class="hover-underline-animation" id="bold" href="index.html">Foje.</a>
@@ -41,68 +40,53 @@
     </div>
   </div>
 
-
-
   <div id="content">
-
     <div id="header">
-
       <p id="bold">FEATURED WORK</p>
     </div>
 
-
     <div class="container">
       <section>
-
         <div id="banner">
-          <h1 data-scroll data-scroll-speed="1" class="header1" id="bold">We are Foda. </h1>
-          <p data-scroll data-scroll-speed="2" data-scroll-delay="0.6" class="paragraph" id="regular">A creative
-            agency</br>based in Portugal</p>
+<!--          <h1 data-scroll data-scroll-speed="1" class="header1" id="bold"><span>We are Foje.</span></h1>
+         <p data-scroll data-scroll-speed="2" data-scroll-delay="0.6" class="paragraph" id="regular">A creative
+            agency</br>based in Portugal</p> -->
         </div>
       </section>
       <section id="sectionPin">
-
         <div class="pin-wrap">
-          <div id="empty">
-
-          </div>
+          <div id="empty"></div>
           <h1 class="header2"><span id="bold">WHY US?</span> </br> <span id="regular">Because we have experience.</span>
           </h1>
-          <div id="featuredResults">
-
-          </div>
-
+          <div id="featuredResults"></div>
         </div>
       </section>
-
       <section data-bgcolor="#e3857a" data-textcolor="#f1dba7">
+        <img class="imagem"
+          src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          alt="">
+        <h2 data-scroll data-scroll-speed="1" class="credit"><a href="https://thisisadvantage.com" target="_blank">Who Are We?</a></h2>
+      </section>
+<!--       <section data-bgcolor="#e3857a" data-textcolor="#f1dba7">
         <img class="imagem"
           src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt="">
         <h2 data-scroll data-scroll-speed="1" class="credit"><a href="https://thisisadvantage.com" target="_blank">Made
             by Advantage</a></h2>
-      </section>
-
-
+      </section> -->
     </div>
-  </div>
-
-  </div>
   </div>
 
   <div id="curr" class="custom-cursor" data-custom-cursor>
     <div class="cursor"></div>
   </div>
 
-
   <script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js'></script>
   <script src='https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js'></script>
 
-
   <script src="./scripts/cursor.js"></script>
   <script src="./scripts/title.js"></script>
-
   <script src="./scripts/featured.js"></script>
   <script src="./scripts/about.js"></script>
 </body>
