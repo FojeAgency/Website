@@ -62,7 +62,7 @@ document.querySelector('.container').addEventListener('scroll', function () {
   const opacity = 1 - (scrollPosition / this.scrollHeight);
   console.log("opacity:", opacity);
   
-  document.getElementById('background-video').style.opacity = opacity.toString();
+  document.getElementById('background-image').style.opacity = opacity.toString();
 });
 
 // Get the banner section element
@@ -73,16 +73,16 @@ console.log("Banner section:", bannerSection);
 const bannerEndPosition = bannerSection.offsetTop + bannerSection.offsetHeight;
 console.log("Banner end position:", bannerEndPosition);
 
-// Function to fade out the background video when scrolling past the end of the banner section
+// Function to fade out the background image when scrolling past the end of the banner section
 const fadeOutBackground = () => {
   const scrollPosition = scroller.scroll.instance.scroll.y; // Get the current scroll position
   if (scrollPosition >= bannerEndPosition) {
-    gsap.to('#background-video', {
+    gsap.to('#background-image', {
       opacity: 0,
       duration: 0.2 // Adjust the duration as needed
     });
   } else {
-    gsap.to('#background-video', {
+    gsap.to('#background-image', {
       opacity: 1,
       duration: 0.2 // Adjust the duration as needed
     });
@@ -91,3 +91,6 @@ const fadeOutBackground = () => {
 
 // Call the fadeOutBackground function on scroll
 scroller.on('scroll', fadeOutBackground);
+
+
+
