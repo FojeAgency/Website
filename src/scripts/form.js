@@ -81,16 +81,6 @@ previewContainer.addEventListener('click', (e) => {
     photoupload.click();
 });
 
-
-const tabs = document.querySelectorAll('.tabs > div');
-
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        window.location.href = 'index.html';
-    });
-});
-
-
 //ATIVAR NO FORM.HTML ---------------------------------------------------------------------------------- ATIVAR NO FORM.HTML
 
 function validateForm() {
@@ -138,7 +128,7 @@ function validateForm() {
     }
 
     return isValid;
-} 
+}
 
 
 
@@ -169,7 +159,6 @@ form.addEventListener("submit", function (event) {
     }
 });
 
-window.onload = function() {
+window.onload = function () {
     initAutocomplete();
-  };
-  
+};

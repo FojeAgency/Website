@@ -4,31 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Foje. Agency</title>
 
-    <link rel="stylesheet" href="../css/stylesheet-form.css">
     <link rel="stylesheet" href="../css/stylesheet.css">
-
+    <link rel="stylesheet" href="../css/stylesheet-form.css">
 </head>
 
 <body>
-
-    <div id="body-container">
-        <div id="logo">
-            <a href="about-us.html">
-                <p id="bold">Foje. Agency</p>
-                <p id="regular">Backend</p>
-            </a>
-        </div>
-
-        <div class="big-container">
+    <header>
+        <div>
+            <a class="logo black bold" href="../index.html">Foje.</a>
+            <a class="logo black regular" href="../index.html">Backend</a>
 
             <div class="form-tab">
-                <h1 class="page-title" id="bold">submissão </br> de posts</h1>
+                <h1 class="bold">Submissão de posts</h1>
                 <div class="dropdown">
-                    <hr class="hr-drop-down">
+                    <hr>
                     <div class="dropdown-header">
-                        <p class="p-drop-down">normas de submissão</p>
+                        <p class="dropdown-title bold">normas de submissão</p>
                         <span class="dropdown-arrow">&#10095;</span>
                     </div>
                     <div class="dropdown-content">
@@ -36,103 +29,113 @@
                         <p>Não superiores a 500kb</p>
                         <p>Confirma que ao submeter o registo cede os direitos de imagem que lhe estão inerentes.</p>
                     </div>
-                    <hr class="hr-drop-down">
+                    <hr>
 
                 </div>
                 <div class="error-container"></div>
                 <div class="feedback-container"></div>
             </div>
-            <div class="form-container">
+        </div>
+    </header>
 
-
-
-                <div class="form-section">
-                    <hr>
-                    <div class="form-info-subsection">
-
-                        <h2 class="section-title">dados do registo</h2>
-                        <p>Esta secção destina-se à recolha dos dados do registo e do autor do mesmo.</p>
-                    </div>
-
-                    <div class="form-input-subsection">
-                        <!--                         <form name="myForm" action="/submit" method="POST" enctype="multipart/form-data"
-                            onsubmit="return validateForm()" novalidate> -->
-                            <form name="myForm" action="/submit" method="POST" enctype="multipart/form-data" novalidate>
-                                <div class="column-1">
-                                    <!-- File Upload for Images -->
-                                    <input type="file" id="cover" name="cover" accept="image/*,video/*" required><br><br>
-                                    <input type="file" id="media" name="media" multiple accept="image/*,video/*" required><br><br>
-                                </div>
-                            
-                                <div class="column-2">
-                                    <!-- Title, Description, Date, Fields, Keywords, Context, Advised by, With, Tools, Featured -->
-                                    <input type="text" id="title" name="title" autocomplete="off" placeholder="Title" required><br><br>
-                                    <input type="text" id="description" name="description" autocomplete="off" placeholder="Description" required><br><br>
-                                    <input type="date" id="date" name="date" required><br><br>
-                                    <select id="domain" name="domain" required>
-                                        <option value="" disabled selected>Choose Domain</option>
-                                        <option value="design">Design</option>
-                                        <option value="video">Video</option>
-                                    </select>
-                                    
-                                    <div>
-                                        <h3>Choose Field(s)</h3>
-                                        <input type="checkbox" id="graphic_design" name="fields[]" value="graphic design">
-                                        <label for="graphic_design">Graphic Design</label><br>
-                                        <input type="checkbox" id="web_design" name="fields[]" value="webdesign">
-                                        <label for="web_design">Web Design</label><br>
-                                        <input type="checkbox" id="video_production" name="fields[]" value="video">
-                                        <label for="video_production">Video Production</label><br>
-                                        <input type="checkbox" id="photography" name="fields[]" value="photography">
-                                        <label for="photography">Photography</label><br>
-                                        <input type="checkbox" id="thumbnail_design" name="fields[]" value="thumbnail design">
-                                        <label for="thumbnail_design">Thumbnail Design</label><br>
-                                    </div><br>
-                                    <input type="text" id="keywords" name="keywords" autocomplete="off" placeholder="Keywords" required><br><br>
-                                    <textarea id="context" name="context" rows="4" placeholder="Context" required></textarea><br><br>
-                                    <input type="text" id="advised_with" name="advised_with" autocomplete="off" placeholder="Advised by, With" required><br><br>
-                                    <div>
-                                        <h3>Choose Tool(s)</h3>
-                                        <input type="checkbox" id="adobe_premiere" name="tools[]" value="Adobe Premiere">
-                                        <label for="adobe_premiere">Adobe Premiere</label><br>
-                                        <input type="checkbox" id="adobe_after_effects" name="tools[]" value="Adobe After Effects">
-                                        <label for="adobe_after_effects">Adobe After Effects</label><br>
-                                        <input type="checkbox" id="adobe_photoshop" name="tools[]" value="Adobe Photoshop">
-                                        <label for="adobe_photoshop">Adobe Photoshop</label><br>
-                                        <input type="checkbox" id="adobe_illustrator" name="tools[]" value="Adobe Illustrator">
-                                        <label for="adobe_illustrator">Adobe Illustrator</label><br>
-                                        <input type="checkbox" id="adobe_indesign" name="tools[]" value="Adobe InDesign">
-                                        <label for="adobe_indesign">Adobe InDesign</label><br>
-                                        <input type="checkbox" id="figma" name="tools[]" value="Figma">
-                                        <label for="figma">Figma</label><br>
-                                        <input type="checkbox" id="processing" name="tools[]" value="Processing">
-                                        <label for="processing">Processing</label><br>
-                                        <input type="checkbox" id="p5js" name="tools[]" value="P5.js">
-                                        <label for="p5js">P5.js</label><br>
-                                        <input type="checkbox" id="html" name="tools[]" value="HTML">
-                                        <label for="html">HTML</label><br>
-                                        <input type="checkbox" id="js" name="tools[]" value="JS">
-                                        <label for="js">JS</label><br>
-                                        <input type="checkbox" id="css" name="tools[]" value="CSS">
-                                        <label for="css">CSS</label><br>
-                                        <input type="checkbox" id="nodejs" name="tools[]" value="Node.js">
-                                        <label for="nodejs">Node.js</label><br>
-                                    </div><br>
-                                    <input type="checkbox" id="featured" name="featured">
-                                    <label for="featured">Featured</label><br><br>
-                                    <button type="submit" class="link-button">Submit</button>
-                                </div>
-                            
-
-                            </form>
-                    </div>
-                </div>
-
+    <main class="form-container">
+        <form name="myForm" action="/submit" method="POST" enctype="multipart/form-data" novalidate
+            class="form-input-subsection">
+            <div>
+                <h2 class="bold">Dados do registo</h2>
+                <input type="file" id="cover" name="cover" accept="image/*,video/*" required>
+                <input type="file" id="media" name="media" multiple accept="image/*,video/*" required>
             </div>
 
-        </div>
-    </div>
+            <div>
+                <p>Esta secção destina-se à recolha dos dados do registo e do autor do mesmo.</p>
+                <input type="text" id="title" name="title" autocomplete="off" placeholder="Title" required>
+                <input type="text" id="description" name="description" autocomplete="off" placeholder="Description"
+                    required>
+                <input type="date" id="date" name="date" required>
+                <select id="domain" name="domain" required>
+                    <option value="" disabled selected>Choose Domain</option>
+                    <option value="design">Design</option>
+                    <option value="video">Video</option>
+                </select>
 
+                <div>
+                    <h3 class="bold">Choose Field(s)</h3>
+                    <input type="checkbox" id="graphic_design" name="fields[]" value="graphic design">
+                    <label for="graphic_design">Graphic Design</label>
+                    <input type="checkbox" id="web_design" name="fields[]" value="webdesign">
+                    <label for="web_design">Web Design</label>
+                    <input type="checkbox" id="video_production" name="fields[]" value="video">
+                    <label for="video_production">Video Production</label>
+                    <input type="checkbox" id="photography" name="fields[]" value="photography">
+                    <label for="photography">Photography</label>
+                    <input type="checkbox" id="thumbnail_design" name="fields[]" value="thumbnail design">
+                    <label for="thumbnail_design">Thumbnail Design</label>
+                </div>
+                <input type="text" id="keywords" name="keywords" autocomplete="off" placeholder="Keywords" required>
+                <textarea id="context" name="context" rows="4" placeholder="Context" required></textarea>
+                <input type="text" id="advised_with" name="advised_with" autocomplete="off"
+                    placeholder="Advised by, With" required>
+                <div>
+                    <h3 class="bold">Choose Tool(s)</h3>
+                    <div>
+                        <input type="checkbox" id="adobe_premiere" name="tools[]" value="Adobe Premiere">
+                        <label for="adobe_premiere">Adobe Premiere</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="adobe_after_effects" name="tools[]" value="Adobe After Effects">
+                        <label for="adobe_after_effects">Adobe After Effects</label>
+                    </div>
+                    <div>
+
+                        <input type="checkbox" id="adobe_photoshop" name="tools[]" value="Adobe Photoshop">
+                        <label for="adobe_photoshop">Adobe Photoshop</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="adobe_illustrator" name="tools[]" value="Adobe Illustrator">
+                        <label for="adobe_illustrator">Adobe Illustrator</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="adobe_indesign" name="tools[]" value="Adobe InDesign">
+                        <label for="adobe_indesign">Adobe InDesign</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="figma" name="tools[]" value="Figma">
+                        <label for="figma">Figma</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="processing" name="tools[]" value="Processing">
+                        <label for="processing">Processing</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="p5js" name="tools[]" value="P5.js">
+                        <label for="p5js">P5.js</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="html" name="tools[]" value="HTML">
+                        <label for="html">HTML</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="js" name="tools[]" value="JS">
+                        <label for="js">JS</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="css" name="tools[]" value="CSS">
+                        <label for="css">CSS</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="nodejs" name="tools[]" value="Node.js">
+                        <label for="nodejs">Node.js</label>
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="featured" name="featured">
+                    <label for="featured">Featured</label>
+                </div>
+                <button type="submit" class="link-button bold">Submit</button>
+            </div>
+        </form>
+    </main>
 
     <script src="../scripts/env.js"></script>
     <!-- <a href="arquivo.html"> Inserir </a> -->

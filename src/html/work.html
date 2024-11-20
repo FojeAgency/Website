@@ -4,145 +4,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/stylesheet.css">
+  <link rel="stylesheet" href="../css/stylesheet-contact.css" />
   <link rel="stylesheet" href="../css/stylesheet-work.css">
   <link rel="stylesheet" href="../css/stylesheet-cursor.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/locomotive-scroll/4.0.6/locomotive-scroll.min.js"></script> -->
   <title>Foje. Agency</title>
-
 </head>
-
 
 <body>
   <div id="loader-container">
-    <img width="200px" id="loader" src="../data/loading.gif" style="display: none;">
-
+    <img width="200px" src="../data/loading.gif" alt="Page Loader">
   </div>
-  <div id="nav-bar">
-
-    <div id="logo">
-      <a class="hover-underline-animation" id="bold" href="../index.html">Foje.</a>
+  <header>
+    <div class="navbar-content">
+      <a class="logo hover-underline-animation black bold" href="../index.html">Foje.</a>
+      <div class="filters-container">
+        <button id="toggleFilters" class="small-text" href="#">Filters ↘</button>
+        <form id="filters" action="/submit2" method="POST">
+          <div>
+            <label class="bold small-text uppercase">Search</label>
+            <input type="search" id="search" name="search" placeholder="Keyword Search" autocomplete="off"
+              class="search-input">
+            <img id="search-icon" src="../data/search-icon.png" width="10px" height="10px">
+          </div>
+          <div>
+            <label class="bold small-text uppercase">Fields</label>
+            <input type="checkbox" id="graphic_design" name="fields" value="graphic design">
+            <label for="graphic_design" class="hover-underline-animation black small-text">Graphic Design</label><br>
+            <input type="checkbox" id="webdesign" name="fields" value="webdesign">
+            <label for="webdesign" class="hover-underline-animation black small-text">Web Design</label><br>
+            <input type="checkbox" id="video" name="fields" value="video">
+            <label for="video" class="hover-underline-animation black small-text">Video</label><br>
+            <input type="checkbox" id="photography" name="fields" value="photography">
+            <label for="photography" class="hover-underline-animation black small-text">Photography</label><br>
+            <input type="checkbox" id="thumbnail_design" name="fields" value="thumbnail design">
+            <label for="thumbnail_design" class="hover-underline-animation black small-text">Thumbnail
+              Design</label>
+          </div>
+          <div>
+            <label class="bold small-text uppercase">Tools</label>
+            <input type="checkbox" id="Adobe_Premiere" name="tools" value="Adobe Premiere">
+            <label for="Adobe_Premiere" class="hover-underline-animation black small-text"> Adobe Premiere</label><br>
+            <input type="checkbox" id="Adobe_After_Effects" name="tools" value="Adobe After Effects">
+            <label for="Adobe_After_Effects" class="hover-underline-animation black small-text">Adobe After
+              Effects</label><br>
+            <input type="checkbox" id="Adobe_Photoshop" name="tools" value="Adobe Photoshop">
+            <label for="Adobe_Photoshop" class="hover-underline-animation black small-text">Adobe Photoshop</label><br>
+            <input type="checkbox" id="Adobe_Illustrator" name="tools" value="Adobe Illustrator">
+            <label for="Adobe_Illustrator" class="hover-underline-animation black small-text">Adobe
+              Illustrator</label><br>
+            <input type="checkbox" id="Adobe_InDesign" name="tools" value="Adobe InDesign">
+            <label for="Adobe_InDesign" class="hover-underline-animation black small-text">Adobe InDesign</label><br>
+            <input type="checkbox" id="Figma" name="tools" value="Figma">
+            <label for="Figma" class="hover-underline-animation black small-text">Figma</label><br>
+            <input type="checkbox" id="Processing" name="tools" value="Processing">
+            <label for="Processing" class="hover-underline-animation black small-text">Processing</label><br>
+            <input type="checkbox" id="P5_js" name="tools" value="P5.js">
+            <label for="P5_js" class="hover-underline-animation black small-text">P5.js</label><br>
+            <input type="checkbox" id="HTML" name="tools" value="HTML">
+            <label for="HTML" class="hover-underline-animation black small-text">HTML</label><br>
+            <input type="checkbox" id="JS" name="tools" value="JS">
+            <label for="JS" class="hover-underline-animation black small-text">JS</label><br>
+            <input type="checkbox" id="CSS" name="tools" value="CSS">
+            <label for="CSS" class="hover-underline-animation black small-text">CSS</label><br>
+            <input type="checkbox" id="Node_js" name="tools" value="Node.js">
+            <label for="Node_js" class="hover-underline-animation black small-text">Node.js</label>
+          </div>
+        </form>
+      </div>
     </div>
+    <div class="navbar-content">
+      <nav>
+        <a class="hover-underline-animation black bold" href="work.html">Work</a>
+        <a class="hover-underline-animation black regular" href="../index.html#about">About</a>
+        <a class="hover-underline-animation black regular" href="contact.html">Contact</a>
+      </nav>
+      <div class="burger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </header>
 
-    <div id="nav-bar-content">
-      <a id="toggleFilters" href="#">Filters ↘</a>
-      <div id="filtros">
-        <div id="filters">
-          <!-- <label class="filter-light">PROCURAR</label><br> -->
-          <form id="selection" action="/submit2" method="POST">
-            <div class="options">
-              <label id="bold-small" class="filter-title">SEARCH</label>
-              </br>
-              <input type="search" id="search" name="search" placeholder="Keyword Search" autocomplete="off"
-                class="search-input">
-              <img id="search-icon" src="../data/search-icon.png" width="10px" height="10px">
-              </br>
-              </br>
-            </div>
+  <main>
+    <div id="gallery">
+      <p class="header bold uppercase">Our Work</p>
+      <div class="gallery-projects"></div>
+    </div>
+    <footer>
+      <section class="contact-container">
+        <p class="header bold uppercase">Contact Us</p>
+        <h2 class="section-title bold">Let's Talk.</h2>
+        <form id="myForm" action="/sendmail" method="POST">
+          <div class="double-input-container">
+            <input type="text" id="name" name="name" placeholder="Nome" autocomplete="off" required />
+            <input type="text" id="email" name="email" placeholder="Email" autocomplete="off" required />
+          </div>
+          <input type="text" id="subject" name="subject" autocomplete="off" placeholder="Subject" required />
+          <textarea id="message" name="message" autocomplete="off" placeholder="Message" rows="1" required></textarea>
+          <a class="submit-form" href="#" onclick="document.getElementById('myForm').submit(); return false;">Submit</a>
+        </form>
 
-            <div class="filter-component">
-              <label id="bold-small" class="filter-title">FIELDS</label>
-
-              <div class="options">
-                <input type="checkbox" id="graphic_design" name="fields" value="graphic design">
-                <label id="regular-small" for="graphic_design" class="hover-underline-animation"><span>Graphic
-                    Design</span></label><br>
-                <input type="checkbox" id="webdesign" name="fields" value="webdesign">
-                <label id="regular-small" for="webdesign" class="hover-underline-animation"><span>Web
-                    Design</span></label><br>
-                <input type="checkbox" id="video" name="fields" value="video">
-                <label id="regular-small" for="video" class="hover-underline-animation"><span>Video</span></label><br>
-                <input type="checkbox" id="photography" name="fields" value="photography">
-                <label id="regular-small" for="photography"
-                  class="hover-underline-animation"><span>Photography</span></label><br>
-                <input type="checkbox" id="thumbnail_design" name="fields" value="thumbnail design">
-                <label id="regular-small" for="thumbnail_design" class="hover-underline-animation"><span>Thumbnail
-                    Design</span></label><br><br>
-              </div>
-            </div>
-
-            <div class="filter-component">
-              <label id="bold-small" class="filter-title">TOOLS</label>
-              <div class="options">
-                <input type="checkbox" id="Adobe_Premiere" name="tools" value="Adobe Premiere">
-                <label id="regular-small" for="Adobe_Premiere" class="hover-underline-animation"> <span>Adobe
-                    Premiere</span></label><br>
-                <input type="checkbox" id="Adobe_After_Effects" name="tools" value="Adobe After Effects">
-                <label id="regular-small" for="Adobe_After_Effects" class="hover-underline-animation"><span>Adobe After
-                    Effects</span></label><br>
-                <input type="checkbox" id="Adobe_Photoshop" name="tools" value="Adobe Photoshop">
-                <label id="regular-small" for="Adobe_Photoshop" class="hover-underline-animation"><span>Adobe
-                    Photoshop</span></label><br>
-                <input type="checkbox" id="Adobe_Illustrator" name="tools" value="Adobe Illustrator">
-                <label id="regular-small" for="Adobe_Illustrator" class="hover-underline-animation"><span>Adobe
-                    Illustrator</span></label><br>
-                <input type="checkbox" id="Adobe_InDesign" name="tools" value="Adobe InDesign">
-                <label id="regular-small" for="Adobe_InDesign" class="hover-underline-animation"><span>Adobe
-                    InDesign</span></label><br>
-                <input type="checkbox" id="Figma" name="tools" value="Figma">
-                <label id="regular-small" for="Figma" class="hover-underline-animation"><span>Figma</span></label><br>
-                <input type="checkbox" id="Processing" name="tools" value="Processing">
-                <label id="regular-small" for="Processing"
-                  class="hover-underline-animation"><span>Processing</span></label><br>
-                <input type="checkbox" id="P5_js" name="tools" value="P5.js">
-                <label id="regular-small" for="P5_js" class="hover-underline-animation"><span>P5.js</span></label><br>
-                <input type="checkbox" id="HTML" name="tools" value="HTML">
-                <label id="regular-small" for="HTML" class="hover-underline-animation"><span>HTML</span></label><br>
-                <input type="checkbox" id="JS" name="tools" value="JS">
-                <label id="regular-small" for="JS" class="hover-underline-animation"><span>JS</span></label><br>
-                <input type="checkbox" id="CSS" name="tools" value="CSS">
-                <label id="regular-small" for="CSS" class="hover-underline-animation"><span>CSS</span></label><br>
-                <input type="checkbox" id="Node_js" name="tools" value="Node.js">
-                <label id="regular-small" for="Node_js" class="hover-underline-animation"><span>Node.js</span></label>
-              </div>
-            </div>
-          </form>
+      </section>
+      <section class="info-container">
+        <div class="column">
+          <h2 class="uppercase small-text">Phone</h2>
+          <a href="https://api.whatsapp.com/send?phone=351935425373">Whatsapp</a>
+          <p>+351 935 425 373</p>
+          <p>+351 967 657 899</p>
         </div>
-      </div>
-
-      <div id="nav-bar-links">
-        <a class="hover-underline-animation" id="bold" href="work.html">Work</a><br>
-        <a class="hover-underline-animation" id="regular" href="about.html">About</a><br>
-        <a class="hover-underline-animation" id="regular" href="contact.html">Contact</a>
-      </div>
-
-    </div>
-    <div id="burger-menu" class="burger-menu">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-  </div>
-
-  <div id="content">
-    <div id="header">
-      <p id="bold">OUR WORK</p>
-    </div>
-    <div id="galeria">
-      <div id="results">
-
-      </div>
-    </div>
-  </div>
+        <div class="column">
+          <h2 class="uppercase small-text">Address</h2>
+          <a href="mailto:foje.agency@gmail.com">foje.agency@gmail.com</a>
+          <p>Coimbra, Portugal</p>
+        </div>
+        <div class="column">
+          <h2 class="uppercase small-text">Social</h2>
+          <a href="https://www.instagram.com/">Instagram</a>
+          <a href="https://www.facebook.com/">Facebook</a>
+          <a href="https://www.linkedin.com/">LinkedIn</a>
+        </div>
+      </section>
+    </footer>
+  </main>
 
   <div id="curr" class="custom-cursor" data-custom-cursor>
     <div class="cursor"></div>
   </div>
 
-
   <script src="../scripts/cursor.js"></script>
-  <script src="../scripts/title.js"></script>
-
-  <script src="../scripts/portfolio.js"></script>
+  <script src="../scripts/work.js"></script>
   <script>
     $(document).ready(function () {
-      $('#burger-menu').click(function () {
-        $('#nav-bar-links').toggle();
+      const $window = $(window);
+      const $body = $("body");
+
+      $('.burger-menu').click(function () {
+        $body.toggleClass("mobile");
       });
 
-      $('#toggleFilters').click(function () {
-        $('#filtros').slideToggle();
+      $window.resize(() => {
+        const windowsize = $window.width();
+        if (windowsize > 780) $body.removeClass("mobile");
       });
     });
   </script>

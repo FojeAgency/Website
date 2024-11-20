@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="stylesheet" href="../css/stylesheet-contact.css" />
+    <link rel="stylesheet" href="../css/stylesheet-project.css">
+    <link rel="stylesheet" href="../css/stylesheet-cursor.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <title>Foje. Agency</title>
+</head>
+
+<body>
+    <div id="loader-container">
+        <img width="200px" src="../data/loading.gif" alt="Page Loader">
+    </div>
+    <header>
+        <a class="logo hover-underline-animation black bold" href="../index.html">Foje.</a>
+        <div class="navbar-content">
+            <nav>
+                <a class="hover-underline-animation black bold" href="work.html">Work</a>
+                <a class="hover-underline-animation black regular" href="../index.html#about">About</a>
+                <a class="hover-underline-animation black regular" href="contact.html">Contact</a>
+            </nav>
+            <div class="burger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <a class="header bold uppercase" href="work.html">Our Work</a>
+            <div class="project-cover" id="projectCover"></div>
+            <div class="title-section">
+                <div>
+                    <h2 bold="bold" id="projectTitle">-</h2>
+                    <p class="uppercase small-text" id="projectContext">-</p>
+                </div>
+                <p class="uppercase small-text" id="projectDomainDate">-</p>
+            </div>
+            <div class="info-section">
+                <div class="column">
+                    <div id="projectFields">
+                        <p class="uppercase small-text">Fields</p>
+                        <p>-</p>
+                    </div>
+                    <div id="projectKeywords">
+                        <p class="uppercase small-text">Keywords</p>
+                        <p>-</p>
+                    </div>
+                    <div id="projectAdvisedWith">
+                        <p class="uppercase small-text">Advised By / With</p>
+                        <p>-</p>
+                    </div>
+                    <div id="projectTools">
+                        <p class="uppercase small-text">Tools</p>
+                        <p>-</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div id="projectDescription">
+                        <p class="uppercase small-text">Description</p>
+                        <p>-</p>
+                    </div>
+                </div>
+            </div>
+            <div class="media-container" id="projectMedia"></div>
+
+            <!-- SECTION 1: ONLY TEXT -->
+            <div class="section-info-extra only-title">
+                <span class="section-title bold">Title #1</span>
+            </div>
+
+            <!-- SECTION 2: TITLE + TEXT -->
+            <div class="section-info-extra title-text">
+                <span class="section-title bold">Title #2</span>
+                <span>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis arcu lectus, mollis at risus ut,
+                    mattis hendrerit est. Donec eu neque dignissim, mattis velit a, gravida dui. Fusce ullamcorper
+                    fermentum augue et luctus. Nam sit amet sem nulla. Integer at faucibus nisl. Nunc augue lectus,
+                    viverra in pharetra at, posuere vitae ex. Curabitur facilisis lorem ac diam tempor scelerisque.
+                </span>
+            </div>
+
+            <!-- SECTION 3: TEXT + IMAGE -->
+            <div class="section-info-extra text-img">
+                <span>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis arcu lectus, mollis at risus ut,
+                    mattis hendrerit est. Donec eu neque dignissim, mattis velit a, gravida dui. Fusce ullamcorper
+                    fermentum augue et luctus. Nam sit amet sem nulla. Integer at faucibus nisl. Nunc augue lectus,
+                    viverra in ph aretra at, posuere vitae ex. Curabitur facil isis lorem ac diam tempor scelerisque.
+                </span>
+                <img src="https://4.img-dpreview.com/files/p/E~TS590x0~articles/3925134721/0266554465.jpeg"
+                    alt="sample img">
+            </div>
+
+            <!-- SECTION 4: ONLY IMAGE -->
+            <div class="section-info-extra only-img">
+                <img src=" https://4.img-dpreview.com/files/p/E~TS590x0~articles/3925134721/0266554465.jpeg"
+                    alt="sample img">
+            </div>
+
+            <div class="navigation">
+                <div id="previous-container"></div>
+                <div id="next-container"></div>
+            </div>
+        </section>
+        <footer>
+            <section class="contact-container">
+                <p class="header bold uppercase">Contact Us</p>
+                <h2 class="section-title bold">Let's Talk.</h2>
+                <form id="myForm" action="/sendmail" method="POST">
+                    <div class="double-input-container">
+                        <input type="text" id="name" name="name" placeholder="Nome" autocomplete="off" required />
+                        <input type="text" id="email" name="email" placeholder="Email" autocomplete="off" required />
+                    </div>
+                    <input type="text" id="subject" name="subject" autocomplete="off" placeholder="Subject" required />
+                    <textarea id="message" name="message" autocomplete="off" placeholder="Message" rows="1"
+                        required></textarea>
+                    <a class="submit-form" href="#"
+                        onclick="document.getElementById('myForm').submit(); return false;">Submit</a>
+                </form>
+
+            </section>
+            <section class="info-container">
+                <div class="column">
+                    <h2 class="uppercase small-text">Phone</h2>
+                    <a href="https://api.whatsapp.com/send?phone=351935425373">Whatsapp</a>
+                    <p>+351 935 425 373</p>
+                    <p>+351 967 657 899</p>
+                </div>
+                <div class="column">
+                    <h2 class="uppercase small-text">Address</h2>
+                    <a href="mailto:foje.agency@gmail.com">foje.agency@gmail.com</a>
+                    <p>Coimbra, Portugal</p>
+                </div>
+                <div class="column">
+                    <h2 class="uppercase small-text">Social</h2>
+                    <a href="https://www.instagram.com/">Instagram</a>
+                    <a href="https://www.facebook.com/">Facebook</a>
+                    <a href="https://www.linkedin.com/">LinkedIn</a>
+                </div>
+            </section>
+        </footer>
+    </main>
+
+    <div id="curr" class="custom-cursor" data-custom-cursor>
+        <div class="cursor"></div>
+    </div>
+
+    <script src="../scripts/cursor.js"></script>
+    <script src="../scripts/project.js"></script>
+    <script>
+        $(document).ready(function () {
+            const $window = $(window);
+            const $body = $("body");
+
+            $('.burger-menu').click(function () {
+                $body.toggleClass("mobile");
+            });
+
+            $window.resize(() => {
+                const windowsize = $window.width();
+                if (windowsize > 780) $body.removeClass("mobile");
+            });
+        });
+    </script>
+</body>
+
+</html>

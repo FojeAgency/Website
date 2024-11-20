@@ -9,6 +9,8 @@
   <link rel='stylesheet' href='https://use.typekit.net/skn8ash.css'>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css'>
 
+  <link rel="stylesheet" href="./css/stylesheet.css">
+  <link rel="stylesheet" href="./css/stylesheet-contact.css">
   <link rel="stylesheet" href="./css/stylesheet-about.css">
   <link rel="stylesheet" href="./css/stylesheet-cursor.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -19,23 +21,21 @@
 <body>
 
   <div id="loader-container">
-    <img width="200px" id="loader" src="./data/loading.gif" style="display: none;">
+    <img width="200px" src="../data/loading.gif" alt="Page Loader">
   </div>
   <div id="background-video-container">
     <video id="background-video" autoplay loop muted>
       <source src="https://fojeportfolio.s3.eu-north-1.amazonaws.com/Banner+Foje.MP4" type="video/mp4">
     </video>
   </div>
-  <div id=""></div>
-  
   <div id="nav-bar">
     <div id="logo">
-      <a class="hover-underline-animation" id="bold" href="index.html">Foje.</a>
+      <a class="hover-underline-animation bold" href="index.html">Foje.</a>
     </div>
 
     <div id="nav-bar-links">
       <a class="hover-underline-animation" id="regular" href="./html/work.html">Work</a><br>
-      <a class="hover-underline-animation" id="regular" href="./html/about.html">About</a><br>
+      <a class="hover-underline-animation" id="bold" href="../index.html#about">About</a><br>
       <a class="hover-underline-animation" id="regular" href="./html/contact.html">Contact</a>
     </div>
   </div>
@@ -45,12 +45,58 @@
       <p id="bold">FEATURED WORK</p>
     </div>
 
-    <div class="container">
+    <div class="container" id="about">
       <section>
         <div id="banner">
-<!--          <h1 data-scroll data-scroll-speed="1" class="header1" id="bold"><span>We are Foje.</span></h1>
-         <p data-scroll data-scroll-speed="2" data-scroll-delay="0.6" class="paragraph" id="regular">A creative
-            agency</br>based in Portugal</p> -->
+          <div data-scroll-container>
+            <section data-scroll-section="">
+              <p>Scroll</p>
+              <span class="lerp-wrap" data-scroll="">
+                <span data-scroll="" data-scroll-delay="0.18" data-scroll-speed="6">WE</span>
+                <span data-scroll="" data-scroll-delay="0.14" data-scroll-speed="6">ARE</span>
+                <span data-scroll="" data-scroll-delay="0.12" data-scroll-speed="6">FOJE</span>
+              </span>
+            </section>
+            <section data-scroll-section="">
+              <span class="lerp-wrap" data-scroll="">
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                  data-scroll-speed="6">S</span>
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.14"
+                  data-scroll-speed="6">E</span>
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.12"
+                  data-scroll-speed="6">C</span>
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.1"
+                  data-scroll-speed="6">O</span>
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.08"
+                  data-scroll-speed="6">N</span>
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.06"
+                  data-scroll-speed="6">D</span>
+              </span>
+            </section>
+            <section data-scroll-section="">
+              <span class="lerp-wrap" data-scroll="">
+                <span data-scroll="" data-scroll-delay="0.18" data-scroll-speed="-2">T</span>
+                <span data-scroll="" data-scroll-delay="0.14" data-scroll-speed="-2">H</span>
+                <span data-scroll="" data-scroll-delay="0.12" data-scroll-speed="-2">I</span>
+                <span data-scroll="" data-scroll-delay="0.1" data-scroll-speed="-2">R</span>
+                <span data-scroll="" data-scroll-delay="0.08" data-scroll-speed="-2">D</span>
+              </span>
+            </section>
+            <section data-scroll-section="">
+              <span class="lerp-wrap" data-scroll="">
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                  data-scroll-speed="-6">R</span>
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.14"
+                  data-scroll-speed="-6">O</span>
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.12"
+                  data-scroll-speed="-6">B</span>
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.1"
+                  data-scroll-speed="-6">O</span>
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.08"
+                  data-scroll-speed="-6">T</span>
+              </span>
+            </section>
+          </div>
         </div>
       </section>
       <section id="sectionPin">
@@ -63,111 +109,111 @@
       </section>
       <section data-bgcolor="#e3857a" data-textcolor="#f1dba7">
         <div>
-        <h1 class="header2">
-          <span id="bold">IN VIDEO</span>
-        </h1>
-      </div>
-      <div>
-        <img class="imagem"
-          src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          alt="">
-      </div>
-      <div>
-        <p><span id="regular">- We are proficient in Adobe Premiere Pro, an editing program
-            capable of bringing all your ideas to life. </span></p>
-        <p><span id="regular">- To complement this, we use Adobe After Effects to create motion
-          graphics, making the project more dynamic and giving it an
-          additional animation component. </span></p>
-      </div>
+          <h1 class="header2">
+            <span id="bold">IN VIDEO</span>
+          </h1>
+        </div>
+        <div>
+          <img class="imagem"
+            src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt="">
+        </div>
+        <div>
+          <p><span id="regular">- We are proficient in Adobe Premiere Pro, an editing program
+              capable of bringing all your ideas to life. </span></p>
+          <p><span id="regular">- To complement this, we use Adobe After Effects to create motion
+              graphics, making the project more dynamic and giving it an
+              additional animation component. </span></p>
+        </div>
       </section>
 
 
       <section data-bgcolor="#e3857a" data-textcolor="#f1dba7">
         <div>
-        <h1 class="header2">
-          <span id="bold">GRAPHIC DESIGN</span>
-        </h1>
-      </div>
-      <div>
-        <img class="imagem"
-          src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          alt="">
-      </div>
-      <div>
-        <p><span id="regular">Branding + Visual Identiy</span></p>
-        <p><span id="regular">Our Master’s Degree in Design and Multimedia gives us unique
-          visual references that completly transform your brand’s aesthetic. </span></p>
-      </div>
+          <h1 class="header2">
+            <span id="bold">GRAPHIC DESIGN</span>
+          </h1>
+        </div>
+        <div>
+          <img class="imagem"
+            src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt="">
+        </div>
+        <div>
+          <p><span id="regular">Branding + Visual Identiy</span></p>
+          <p><span id="regular">Our Master’s Degree in Design and Multimedia gives us unique
+              visual references that completly transform your brand’s aesthetic. </span></p>
+        </div>
       </section>
 
 
       <section data-bgcolor="#e3857a" data-textcolor="#f1dba7">
         <div>
-        <h1 class="header2">
-          <span id="bold">3D</span>
-        </h1>
-      </div>
-      <div>
-        <img class="imagem"
-          src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          alt="">
-      </div>
-      <div>
-        <p><span id="regular">If you’re looking for a product visualization, our 3D renders will
-          amaze you. From modeling, to texturing, to shading, to lighting, we
-          will provide you with a realistic output for you to showcase. </span></p>
-      </div>
+          <h1 class="header2">
+            <span id="bold">3D</span>
+          </h1>
+        </div>
+        <div>
+          <img class="imagem"
+            src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt="">
+        </div>
+        <div>
+          <p><span id="regular">If you’re looking for a product visualization, our 3D renders will
+              amaze you. From modeling, to texturing, to shading, to lighting, we
+              will provide you with a realistic output for you to showcase. </span></p>
+        </div>
       </section>
 
 
       <section data-bgcolor="#e3857a" data-textcolor="#f1dba7">
         <div>
-        <h1 class="header2">
-          <span id="bold">PHOTOSHOP</span>
-        </h1>
-      </div>
-      <div>
-        <img class="imagem"
-          src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          alt="">
-      </div>
-      <div>
-        <p><span id="regular">Turn your vision into reality with our Photoshop skills. Along with
-          the vast applications in the commercial space, our work facilitates
-          your creative needs by completing your Youtube process with the
-          creation of appealing Thumbnails. </span></p>
-      </div>
+          <h1 class="header2">
+            <span id="bold">PHOTOSHOP</span>
+          </h1>
+        </div>
+        <div>
+          <img class="imagem"
+            src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt="">
+        </div>
+        <div>
+          <p><span id="regular">Turn your vision into reality with our Photoshop skills. Along with
+              the vast applications in the commercial space, our work facilitates
+              your creative needs by completing your Youtube process with the
+              creation of appealing Thumbnails. </span></p>
+        </div>
       </section>
 
       <section data-bgcolor="#e3857a" data-textcolor="#f1dba7">
         <div>
-        <h1 class="header2">
-          <span id="bold">IN ADDITION TO ALL THIS</span>
-        </h1>
-      </div>
-      
-      <div>
-        <span id="bold">1.</span>
-        <p><span id="regular">We have a wide network of professionals
-          in the field who can complete any need
-          you may have.</span></p>
-      </div>
-      <div>
-        <span id="bold">2.</span>
-        <p><span id="regular">We value your brand, your hard work,
-          your needs, by being present and ready
-          to communicate every step of the way</span></p>
-      </div>
-      <div>
-        <span id="bold">3.</span>
-        <p><span id="regular">We value creativity and try to think
-          outside the box without ever neglecting
-          the message and values that brands seek
-          to convey.</span></p>
-      </div>
+          <h1 class="header2">
+            <span id="bold">IN ADDITION TO ALL THIS</span>
+          </h1>
+        </div>
+
+        <div>
+          <span id="bold">1.</span>
+          <p><span id="regular">We have a wide network of professionals
+              in the field who can complete any need
+              you may have.</span></p>
+        </div>
+        <div>
+          <span id="bold">2.</span>
+          <p><span id="regular">We value your brand, your hard work,
+              your needs, by being present and ready
+              to communicate every step of the way</span></p>
+        </div>
+        <div>
+          <span id="bold">3.</span>
+          <p><span id="regular">We value creativity and try to think
+              outside the box without ever neglecting
+              the message and values that brands seek
+              to convey.</span></p>
+        </div>
       </section>
 
-<!--       <section data-bgcolor="#e3857a" data-textcolor="#f1dba7">
+      <!--       <section data-bgcolor="#e3857a" data-textcolor="#f1dba7">
         <img class="imagem"
           src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt="">
@@ -181,6 +227,41 @@
             by Advantage</a></h2>
       </section> -->
     </div>
+    <footer>
+      <section class="contact-container">
+        <p class="header bold uppercase">Contact Us</p>
+        <h2 class="section-title bold">Let's Talk.</h2>
+        <form id="myForm" action="/sendmail" method="POST">
+          <div class="double-input-container">
+            <input type="text" id="name" name="name" placeholder="Nome" autocomplete="off" required />
+            <input type="text" id="email" name="email" placeholder="Email" autocomplete="off" required />
+          </div>
+          <input type="text" id="subject" name="subject" autocomplete="off" placeholder="Subject" required />
+          <textarea id="message" name="message" autocomplete="off" placeholder="Message" rows="1" required></textarea>
+          <a class="submit-form" href="#" onclick="document.getElementById('myForm').submit(); return false;">Submit</a>
+        </form>
+
+      </section>
+      <section class="info-container">
+        <div class="column">
+          <h2 class="uppercase small-text">Phone</h2>
+          <a href="https://api.whatsapp.com/send?phone=351935425373">Whatsapp</a>
+          <p>+351 935 425 373</p>
+          <p>+351 967 657 899</p>
+        </div>
+        <div class="column">
+          <h2 class="uppercase small-text">Address</h2>
+          <a href="mailto:foje.agency@gmail.com">foje.agency@gmail.com</a>
+          <p>Coimbra, Portugal</p>
+        </div>
+        <div class="column">
+          <h2 class="uppercase small-text">Social</h2>
+          <a href="https://www.instagram.com/">Instagram</a>
+          <a href="https://www.facebook.com/">Facebook</a>
+          <a href="https://www.linkedin.com/">LinkedIn</a>
+        </div>
+      </section>
+    </footer>
   </div>
 
   <div id="curr" class="custom-cursor" data-custom-cursor>
